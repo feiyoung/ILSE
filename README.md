@@ -1,5 +1,5 @@
 # ILSE
-Corrected Least Square Estimation or Full Information Maximum Likelihood Estimation for Linear Regression When Data Include Missing Values.
+Iterative Least Square Estimation or Full Information Maximum Likelihood Estimation for Linear Regression When Data Include Missing Values.
 
 ## Installation
  If you are on Windows, you can 
