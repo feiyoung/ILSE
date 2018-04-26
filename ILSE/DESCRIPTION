@@ -1,0 +1,18 @@
+Package: ILSE
+Type: Package
+Title: Linear Regression by Iterative Least Square Estimation When
+        Covariates Include Missing Values
+Version: 0.1.4
+Author: Wei Liu
+Maintainer: Wei Liu <117020208005@2017.swufe.edu.cn>
+Description: Linear regression when covariates include missing values embedding the 
+    correlation imformation bettwen covariates. Especially for block missing data,
+    it works well. ILSE conduct imputation and regression simultaneouly and iteratively. 
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Date: 2018-04-25
+Depends: stats, mvnmle, MASS, R (>= 3.0.1)
+Imports: MASS, graphics
+Suggests: stats
+Built: R 3.3.0; ; 2018-04-26 08:02:19 UTC; windows
