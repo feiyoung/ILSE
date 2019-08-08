@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Full Information Maximum Likelihood Linear Regression Whether...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fimlreg {ILSE}"><tr><td>fimlreg {ILSE}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Full Information Maximum Likelihood Linear Regression Whether Covariates Include Missing Values or Response Include Missing Values.</h2>
+
+<h3>Description</h3>
+
+<p>Estimate regression coefficients based on Full Information Maximum Likelihood Estimation, which can couple missing data, including response missing or covariates missing.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  # S3 method for 'formula'
+  fimlreg(formula, data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+<p>an object of class &quot;formula&quot; (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which clse is called.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Optional arguments to be passed to the stats::nlm optimization routine.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Note that arguments ... of stats::nlm are the parameters of algorithm, see the details in help file of &quot;nlm&quot;. &quot;fimlreg&quot; can cople with any type of missing data.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Return a list including following components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>beta</code></td>
+<td>
+<p>A named vector of coefficients</p>
+</td></tr>
+<tr valign="top"><td><code>iterations</code></td>
+<td>
+<p>A positive integer, iterative times in total.</p>
+</td></tr>
+<tr valign="top"><td><code>stop.code</code></td>
+<td>
+<p>The stop code returned by nlm.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Liu Wei
+</p>
+
+
+<h3>See Also</h3>
+
+<p>mvnmle package
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(nhanes)
+## example one: include missing value
+fimlreg(age~., data=nhanes, iterlim= 40)
+
+# example two: No missing vlaue
+## example two: No missing value
+n &lt;- 100
+group &lt;- rnorm(n, sd=4)
+weight &lt;- 3.2*group + 1.5 + rnorm(n, sd=0.1)
+fimllm &lt;- fimlreg(weight~group, data=data.frame(weight=weight, group=group))
+fimllm
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ILSE</em> version 0.1.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Summarizing Iterative Least Square Estimation Regression When...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for summary.ilse {ILSE}"><tr><td>summary.ilse {ILSE}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Summarizing Iterative Least Square Estimation Regression When Covariates Include Missing Values</h2>
+
+<h3>Description</h3>
+
+<p>summary method for class &quot;ilse&quot;
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  ## S3 method for class 'ilse'
+  summary(object, Nbt=100)
+  ##
+  Fitted.values(object)
+  ##
+  Residuals(object)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>an object of class &quot;ilse&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>Nbt</code></td>
+<td>
+<p>an positive integer, the repeated times of bootstrap to eatimate covariance matrix of regression coefficient.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>The function summary.ilse computes and returns a named matrix of summary statistics of the fitted linear model given in object by corrected least square estimation.
+The function Fitted.values return a vector, fitted repsonse vlaues.
+The function Residuals return a vector, residuals.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>summary.lm
+fitted.vlaues
+residuals
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# example one
+data(nhanes)
+NAlm &lt;- ilse(age~., data=nhanes)
+summary(NAlm, Nbt=50)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ILSE</em> version 0.1.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate Two Type of Correlation Matrix</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for cor.mat {ILSE}"><tr><td>cor.mat {ILSE}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Generate Two Type of Correlation Matrix</h2>
+
+<h3>Description</h3>
+
+<p>Generate two type of correlation matrix
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  cor.mat(p, rho, type='toeplitz')
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p</code></td>
+<td>
+<p>a positive integer, the dimension of correlation matrix.</p>
+</td></tr>
+<tr valign="top"><td><code>rho</code></td>
+<td>
+<p>a value between 0 and 1, a baseline vlaue of correlation coefficient.</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>a character, specify the type of correlation matrix and only include
+'toeplitz' and 'identity' in current version.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The argument rho specify the size of correlation coeffient. As for argument type, if type='toeplitz', sigma_ij=rho^|i-j|; if type ='identity', sigma_ij=rho when i!=j and sigma_ij=1 when i=j.
+</p>
+
+
+<h3>Value</h3>
+
+<p>return a correlation matrix with a type of specified structure.
+</p>
+
+
+<h3>Note</h3>
+
+<p>nothing
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Liu Wei
+</p>
+
+
+<h3>References</h3>
+
+<p>nothing.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>cov2cor
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+  cor.mat(5, 0.5)
+  cor.mat(5, 0.5, type='identity')
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ILSE</em> version 0.1.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

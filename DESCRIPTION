@@ -2,7 +2,7 @@ Package: ILSE
 Type: Package
 Title: Linear Regression by Iterative Least Square Estimation When
         Covariates Include Missing Values
-Version: 0.1.5
+Version: 0.1.6
 Author: Wei Liu
 Maintainer: Wei Liu <117020208005@2017.swufe.edu.cn>
 Description: Linear regression when covariates include missing values embedding the 
@@ -11,9 +11,9 @@ Description: Linear regression when covariates include missing values embedding 
 License: GPL
 Encoding: UTF-8
 LazyData: true
-Date: 2019-03-22
+Date: 2019-06-22
 NeedsCompilation: no
 Depends: stats, mvnmle, MASS, R (>= 3.0.1)
 Imports: MASS, graphics
 Suggests: stats
-Built: R 3.3.0; ; 2019-03-24 11:24:08 UTC; windows
+Built: R 3.6.0; ; 2019-08-08 04:46:03 UTC; windows

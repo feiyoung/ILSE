@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Linear Regression by Iterative Least Square Estimation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ilse {ILSE}"><tr><td>ilse {ILSE}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Linear Regression by Iterative Least Square Estimation</h2>
+
+<h3>Description</h3>
+
+<p>Linear regression when covariates include missing values embedding the
+correlation imformation bettwen covariates by Iterative Least Square Estimation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  ilse(formula, data,  bw=NULL, intercept=F,k.type=NULL,bw.type='fix.bw',K=NULL,method="Par.cond", max.iter=50, peps=1e-7, feps = 1e-7,infor_output=F)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+<p>an object of class &quot;formula&quot; (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which ilse is called.</p>
+</td></tr>
+<tr valign="top"><td><code>bw</code></td>
+<td>
+<p>a positive value, specify the bandwidth in estimating missing values, default as NULL. When bw=NULL, it is automatically selected by empirical method.</p>
+</td></tr>
+<tr valign="top"><td><code>intercept</code></td>
+<td>
+<p>a optional logical value, indicate whether X or data including intercept term (full-one column), default as 'FALSE'.</p>
+</td></tr>
+<tr valign="top"><td><code>k.type</code></td>
+<td>
+<p>an optional character string, specify the type of kernel used in iterative estimating algorithm and support 'epk', 'biweight', 'triangle', 'guassian', 'triweight', 'tricube', 'cosine', 'uniform' in current version, defualt as 'guassian'.</p>
+</td></tr>
+<tr valign="top"><td><code>bw.type</code></td>
+<td>
+<p>an optional character string, specify the type of kernel bandwidth, only support 'fix.bw'(fixed bandwidth) in current version, may spport variable bandwidth in future version, defualt as 'fix.bw'.</p>
+</td></tr>
+<tr valign="top"><td><code>K</code></td>
+<td>
+<p>an optional positive integer, specify the sample size used in kernel estimates when choose the variable bandwidth.</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>an optional character string, specify the iterative algorithm, only support 'Par.cond' and 'Full.cond' in current version and will support  'SGD' in future version.</p>
+</td></tr>
+<tr valign="top"><td><code>max.iter</code></td>
+<td>
+<p>an optional positive integer, the maximum iterative times, defualt as '50'.</p>
+</td></tr>
+<tr valign="top"><td><code>peps</code></td>
+<td>
+<p>an optional positive value, tolerance vlaue of relative variation rate of estimated parametric vector, defualt as '1e-7'.</p>
+</td></tr>
+<tr valign="top"><td><code>feps</code></td>
+<td>
+<p>an optional positive vlaue, tolerance vlaue of relative variation rate of objective function value, defualt as '1e-7'.</p>
+</td></tr>
+<tr valign="top"><td><code>infor_output</code></td>
+<td>
+<p>an optional logical value, indicate whether output the iterative information, default as 'TRUE'.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Models for ilse are specified symbolically. A typical model has the form response ~ terms where response is the (numeric) response vector and terms is a series of terms which specifies a linear predictor for response. A terms specification of the form first + second indicates all the terms in first together with all the terms in second with duplicates removed. A specification of the form first:second indicates the set of terms obtained by taking the interactions of all terms in first with all terms in second. The specification first*second indicates the cross of first and second. This is the same as first + second + first:second.
+</p>
+
+
+<h3>Value</h3>
+
+<p>ilse returns an object of class &quot;NAlm&quot;.
+</p>
+<p>The functions summary and anova are used to obtain and print a summary and analysis of variance table of the results. The generic accessor functions coefficients, effects, fitted.values and residuals extract various useful features of the value returned by lm.
+</p>
+<p>An object of class &quot;NAlm&quot; is a list containing at least the following components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>beta</code></td>
+<td>
+<p>a named vector of coefficients</p>
+</td></tr>
+<tr valign="top"><td><code>Bmat</code></td>
+<td>
+<p>a named matrix that summary the estimated beta in every iteration.</p>
+</td></tr>
+<tr valign="top"><td><code>d.fn</code></td>
+<td>
+<p>a nonnegative value, vlaue of relative variation rate of objective function value</p>
+</td></tr>
+<tr valign="top"><td><code>d.par</code></td>
+<td>
+<p>a nonnegative value, relative variation rate of estimated parametric vector when algorithm stopped.</p>
+</td></tr>
+<tr valign="top"><td><code>iterations</code></td>
+<td>
+<p>a positive integer, iterative times in total.</p>
+</td></tr>
+<tr valign="top"><td><code>residuals</code></td>
+<td>
+<p>the residuals, that is response minus fitted values.</p>
+</td></tr>
+<tr valign="top"><td><code>fitted.values</code></td>
+<td>
+<p>the fitted mean values.</p>
+</td></tr>
+<tr valign="top"><td><code>inargs</code></td>
+<td>
+<p>a list including all input arguments.</p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>nothing
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Wei Liu
+</p>
+
+
+<h3>References</h3>
+
+<p>Huazhen Lin, Wei Liu, Wei Lan(2019). Regression Analysis with individual-specific
+patterns of missing covariates.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="../../stats/html/lm.html">lm</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## exmaple one: include missing value
+data(nhanes)
+NAlm1 &lt;- ilse(age~., data=nhanes, method = 'Full.cond')
+NAlm1
+NAlm2 &lt;- ilse(age~., data=nhanes,bw=1,bw.type = 'fix.bw',method = 'Par.cond', k.type='gaussian', infor_output = T)
+
+## example two: No missing value
+n &lt;- 100
+group &lt;- rnorm(n, sd=4)
+weight &lt;- 3.2*group + 1.5 + rnorm(n, sd=0.1)
+NAlm3 &lt;- ilse(weight~group, data=data.frame(weight=weight, group=group), intercept = F)
+NAlm3
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ILSE</em> version 0.1.6 <a href="00Index.html">Index</a>]</div>
+</body></html>
