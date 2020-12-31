@@ -9,8 +9,3 @@ install.packages("devtools")
 library(devtools)
 install_github('feiyoung/ILSE')
 ```
-* Running the following R code to use it!
-```
-  library(ILSE)
-  example('ilse')
-```
