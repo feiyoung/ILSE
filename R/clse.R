@@ -28,8 +28,8 @@ ilse.numeric <- function(Y, X,bw=NULL, intercept=F, k.type=NULL,K,bw.type='fix.b
   rss <- rss.old <- sqrt(sum((Y-Xmat0%*%matrix(beta,p,1))^2))
   k <- 0
   if(infor_output==T){
-    cat("iter:", k, "d.fn:",NA, "d.par:", NA, "\n")
-    cat("par:", as.vector(round(beta,2)),'\n')
+    message("iter:", k, "d.fn:",NA, "d.par:", NA, "\n")
+    message("par:", as.vector(round(beta,2)),'\n')
   }
   k <- k+1
   NA_ind <- which(apply(is.na(X), 1, sum) !=0)
@@ -59,10 +59,10 @@ ilse.numeric <- function(Y, X,bw=NULL, intercept=F, k.type=NULL,K,bw.type='fix.b
       shf.indx <- sample(n,n)
       beta.new <- as.numeric(lm(Y~.-1, data.frame(X), subset= i.com )$coef)
       for (i in shf.indx){
-        cat('i=',i, '\n')
+        message('i=',i, '\n')
         xi <- Z2[i,]
-        cat('xi=', xi, '\n')
-        cat('beta.new=', beta.new, '\n')
+        message('xi=', xi, '\n')
+        message('beta.new=', beta.new, '\n')
         ngradi <- 2*(Y[i]-xi%*%beta.new)*xi
         #print(max(abs(ngradi)))
         if (max(abs(ngradi))< 0.1) break
@@ -76,8 +76,8 @@ ilse.numeric <- function(Y, X,bw=NULL, intercept=F, k.type=NULL,K,bw.type='fix.b
     d.par <- max(abs(beta.new-beta)) / max(abs(beta))
 
     if(infor_output==T){
-      cat("iter:", k, "d.fn:",d.fn, "d.par:", d.par, "\n")
-      cat("par:", as.vector(round(beta.new,2)),'\n')
+      message("iter:", k, "d.fn:",d.fn, "d.par:", d.par, "\n")
+      message("coefs:", as.vector(round(beta.new,2)),'\n')
     }
     beta <- beta.new
     Bmat <- rbind(Bmat,matrix(beta.new, nrow=1))
@@ -92,9 +92,11 @@ ilse.numeric <- function(Y, X,bw=NULL, intercept=F, k.type=NULL,K,bw.type='fix.b
     k <- k+1
     if(k==max.iter){warning('algorithm may not converge!')}
   }
+  beta.new <- as.vector(beta.new)
+  names(beta.new) <- colnames(X)
   finalm <- lm(Y~.+0, data.frame(Z2))
   row.names(Bmat) <- paste0('iter', 0:k)
-  res <- list(beta=as.vector(beta.new), Bmat = Bmat, d.fn=d.fn, d.par=d.par, iterations=k,
+  res <- list(beta=beta.new, Bmat = Bmat, d.fn=d.fn, d.par=d.par, iterations=k,
               residuals = finalm$residuals, fitted.values=finalm$fitted.values,
               inargs=list(bw=bw, intercept=intercept, k.type=k.type, bw.type=bw.type,
                           K=K,method=method, max.iter=max.iter, peps=peps,
@@ -102,7 +104,7 @@ ilse.numeric <- function(Y, X,bw=NULL, intercept=F, k.type=NULL,K,bw.type='fix.b
   return(res)
 }
 
-ilse.formula <- function(formula, data, bw=NULL,  intercept=F, k.type=NULL,K=NULL,
+ilse.formula <- function(formula, data=NULL, bw=NULL,  intercept=F, k.type=NULL,K=NULL,
                          bw.type='fix.bw', method="Par.cond", max.iter=50, peps=1e-5, feps = 1e-7,infor_output=F){
   if(is.null(formula)) stop('formula must be given!')
   if (!inherits(formula, "formula"))
@@ -114,6 +116,11 @@ ilse.formula <- function(formula, data, bw=NULL,  intercept=F, k.type=NULL,K=NUL
       XYdat <- model.frame(formula = formula, data = data, na.action=NULL)
     }else{
       XYdat <- model.frame(formula = formula, na.action=NULL)
+      p <- ncol(XYdat[[2]])
+      XYdat <- cbind(XYdat[[1]], XYdat[[2]])
+      colnames(XYdat) <- c("Y", paste0('X', 1:p))
+      data <- as.data.frame(XYdat)
+      formula <- as.formula('Y~.')
     }
     np <- dim(XYdat)
     XYdat <- as.matrix(XYdat)

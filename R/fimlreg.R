@@ -19,14 +19,19 @@ fimlreg.numeric <- function(Y, X, ...){
   names(beta)[2:p1] <- names(data)[2:(p1)]
   return(list(beta=beta, iterations=resEst$iterations, stop.code = resEst$stop.code))
 }
-fimlreg.formula <- function(formula, data, ...){
+fimlreg.formula <- function(formula, data=NULL, ...){
   require(stats)
   if(!is.null(data)){
     data <- model.frame(formula = formula, data = data, na.action=NULL)
   }else{
-    data <- model.frame(formula = formula, na.action=NULL)
+    XYdat <- model.frame(formula = formula, na.action=NULL)
+    p <- ncol(XYdat[[2]])
+    XYdat <- cbind(XYdat[[1]], XYdat[[2]])
+    colnames(XYdat) <- c("Y", paste0('X', 1:p))
+    data <- as.data.frame(XYdat)
+    formula <- as.formula('Y~.')
   }
-  resEst <- mlest(data, ...)
+  suppressMessages({resEst <- mlest(data, ...)})
   p1 <- length(resEst$muhat)
   muhat <- resEst$muhat
   sigmahat <- resEst$sigmahat

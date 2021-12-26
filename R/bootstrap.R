@@ -13,10 +13,13 @@ bootstrap.ilse <- function(obj,repTimes=100){
   peps <- obj$inargs$peps
   feps  <- obj$inargs$ feps
   infor_output <- F
-  if(!intercept) real_p <- ncol(data)
-  else real_p <- ncol(data)-1
+  if(!intercept){
+    real_p <- ncol(data)
+  }else{
+    real_p <- ncol(data)-1
+  }
   n <- nrow(data)
-  cat('===================Start bootstrapping================\n')
+  message('===================Start bootstrapping================\n')
   res.par <- matrix(nrow=repTimes, ncol=real_p)
   for(k in 1:repTimes)
   {
@@ -29,7 +32,7 @@ bootstrap.ilse <- function(obj,repTimes=100){
                            peps, feps,infor_output)$beta, silent = T)
     res.par[k, ] <- coef.par
   }
-  cat('===================Finish bootstrapping================\n')
+  message('===================Finish bootstrapping================\n')
   return(cov(res.par))
 }
 
@@ -39,7 +42,7 @@ bootstrap.fiml <- function(obj, repTimes=100){
   n <- nrow(data)
   p <- ncol(data)
   res.par <- matrix(nrow=repTimes, ncol= p)
-  cat('===================Start bootstrapping================\n')
+  message('===================Start bootstrapping================\n')
   for(k in 1:repTimes)
   {
     set.seed(k)
@@ -49,6 +52,6 @@ bootstrap.fiml <- function(obj, repTimes=100){
     try(coef.par <- fimlreg(formula, data1)$beta, silent = T)
     res.par[k, ] <- coef.par
   }
-  cat('===================Finish bootstrapping================\n')
+  message('===================Finish bootstrapping================\n')
   return(cov(res.par))
 }
