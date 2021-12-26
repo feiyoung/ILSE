@@ -19,4 +19,4 @@ install.packages("ILSE")
 
 # Website of ILSE package
 
-We set up a package website to illustrate the usage of this package. For examples of typical ILSE usage, please see our [Package Website](https://feiyoung.github.io/ILSE/index.html) for a demonstration and overview of the functions included in ILSE.
+We set up a package website to illustrate the usage of this package. For examples of typical ILSE usage, please see our [Package Website](https://feiyoung.github.io/ILSE/docs/index.html) for a demonstration and overview of the functions included in ILSE.
