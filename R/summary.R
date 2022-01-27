@@ -1,8 +1,8 @@
-summary <- function(x, ...) UseMethod("summary")
-summary.ilse <- function(x, Nbt=100){
-  Est <- x$beta
+summary <- function(object, Nbt=100) UseMethod("summary")
+summary.ilse <- function(object, Nbt=100){
+  Est <- object$beta
   res <- matrix(0, nrow=length(Est), ncol=4)
-  Acov <- bootstrap(x, repTimes = Nbt)
+  Acov <- bootstrap(object, repTimes = Nbt)
   stdErr <- sqrt(diag(Acov))
   Zvalue <- Est / stdErr
   Pvalue <- 2*(1-pnorm(abs(Zvalue)))
@@ -15,10 +15,10 @@ summary.ilse <- function(x, Nbt=100){
   res
 }
 
-summary.fiml <- function(x, Nbt=100){
-  Est <- x$beta
+summary.fiml <- function(object, Nbt=100){
+  Est <- object$beta
   res <- matrix(0, nrow=length(Est), ncol=4)
-  Acov <- bootstrap(x, repTimes = Nbt)
+  Acov <- bootstrap(object, repTimes = Nbt)
   stdErr <- sqrt(diag(Acov))
   Zvalue <- Est / stdErr
   Pvalue <- 2*(1-pnorm(abs(Zvalue)))
@@ -30,21 +30,23 @@ summary.fiml <- function(x, Nbt=100){
   colnames(res) <- c('Estimate', 'std. Error', 'Z value', 'Pr(>|Z|)')
   res
 }
-print <- function(x, ...) UseMethod("print")
-print.ilse <- function(x) print(x[1:5])
-print.fiml <- function(x) print(x[1:3])
-Coef <- function(x) {
-  if(!is.element(class(x), c('ilse', 'fiml')))
-    stop('x must be class "ilse" or "fiml"!\n')
-  return(x$beta)
+
+print <- function(object) UseMethod("print")
+print.ilse <- function(object) print(object[1:5])
+print.fiml <- function(object) print(object[1:3])
+
+Coef <- function(object) {
+  if(!is.element(class(object), c('ilse', 'fiml')))
+    stop('object must be class "ilse" or "fiml"!\n')
+  return(object$beta)
 }
-Fitted.values <- function(x){
-  if(!is.element(class(x), c('ilse')))
-    stop('x must be class "ilse"!\n')
-  return(x$fitted.values)
+Fitted.values <- function(object){
+  if(!is.element(class(object), c('ilse')))
+    stop('object must be class "ilse"!\n')
+  return(object$fitted.values)
 }
-Residuals <- function(x){
-  if(!is.element(class(x), c('ilse')))
-    stop('x must be class "ilse"!\n')
-  return(x$residuals)
+Residuals <- function(object){
+  if(!is.element(class(object), c('ilse')))
+    stop('object must be class "ilse"!\n')
+  return(object$residuals)
 }

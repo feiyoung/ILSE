@@ -23,4 +23,3 @@ data(nhanes)
 NAlm2 <- ilse(age~., data=nhanes)
 Coef(NAlm2)
 }
-\keyword{Coefficient}

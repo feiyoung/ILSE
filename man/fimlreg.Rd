@@ -1,15 +1,21 @@
 \name{fimlreg}
 \alias{fimlreg}
-\title{Full Information Maximum Likelihood Linear Regression Whether Covariates Include Missing Values or Response Include Missing Values.}
+\alias{fimlreg.numeric}
+\alias{fimlreg.formula}
+\title{Full Information Maximum Likelihood Linear Regression}
 \description{
   Estimate regression coefficients based on Full Information Maximum Likelihood Estimation, which can couple missing data, including response missing or covariates missing.
 }
 \usage{
-  # S3 method for 'formula'
-  fimlreg(formula, data, ...)
+  fimlreg(...)
+
+  \method{fimlreg}{formula}(formula, data=NULL, ...)
+  \method{fimlreg}{numeric}(Y, X, ...)
 }
 \arguments{
   \item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
+  \item{Y}{a numeric vector, the reponse variable.}
+  \item{X}{a numeric matrix that may include NAs, the covariate matrix.}
   \item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which clse is called.}
   \item{...}{Optional arguments to be passed to the stats::nlm optimization routine.}
 }
@@ -41,4 +47,5 @@ weight <- 3.2*group + 1.5 + rnorm(n, sd=0.1)
 fimllm <- fimlreg(weight~group, data=data.frame(weight=weight, group=group))
 fimllm
 }
-\keyword{Linear Model, Full Information Maximum Likelihood.}
+\keyword{Linear Model}
+\concept{Full Information Maximum Likelihood}

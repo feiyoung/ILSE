@@ -31,13 +31,13 @@ or install from [CRAN](https://cran.r-project.org/)
 `install.packages("ILSE")`
 
 The package can be loaded with the command:
-```{r  eval=TRUE}
+```{r}
 library("ILSE")
 ```
 
 ## Fit linear model using simulated data
 First, we generate the data with  homogeneous  normal variables.
-```{r  eval=TRUE}
+```{r  eval = FALSE}
   n <- 100
   p <- 6
   X <- MASS::mvrnorm(n, rep(0, p), cor.mat(p, rho=0.5))
@@ -48,14 +48,14 @@ First, we generate the data with  homogeneous  normal variables.
 ### A special case: without missing values
 
 Then, we fit the linear regression model without missing values based on ILSE.
-```{r}
+```{r eval = FALSE}
 ilse1 <- ilse(Y~X)
 print(ilse1)
 ```
 
 We can also create a (data.frame) object as input for ILSE.
 
-```{r}
+```{r eval = FALSE}
 dat <- data.frame(Y=Y, X=X)
 ilse1 <- ilse(Y~., data=dat)
 print(ilse1)
@@ -66,14 +66,14 @@ Residuals(ilse1)
 ```
 
 Check the significant variables by bootstratp.
-```{r}
+```{r eval = FALSE}
 s1 <- summary(ilse1)
 s1
 ```
 
 ### Handle data with missing values
 First, we randomly remove some entries in X.
-```{r}
+```{r eval = FALSE}
 mis_rate <- 0.3
 set.seed(1)
 na_id <- sample(1:(n*p), n*p*mis_rate)
@@ -85,41 +85,41 @@ message("Number of complete cases is ", ncomp, '\n')
 
 Second, we use *lm* to fit linear regression model based on complete cases, i.e., CC analysis. We can not detect any siginificant covariates.
 
-```{r}
+```{r eval = FALSE}
 lm1 <- lm(Y~Xmis)
 s_cc <- summary.lm(lm1)
 s_cc
 ```
 
 Third, we use *ILSE* to fit the linear regression model based on all data.
-```{r eval=TRUE}
+```{r eval = FALSE}
 ilse2 <- ilse(Y~Xmis, data=NULL, infor_output=T)
 print(ilse2)
 ```
 
 Fourth, *Bootstrap* is applied to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe four significant coefficients. 
-```{r eval = TRUE}
+```{r eval = FALSE}
 s2 <- summary(ilse2, Nbt=20)
 s2
 ```
 
 
 In *ILSE* package, we also provide Full Information Maximum Likelihood for Linear Regression *fimlreg*. We show how to use it to handle the above missing data.
-```{r eval=TRUE}
+```{r eval = FALSE}
 fimllm <- fimlreg(Y~Xmis)
 print(fimllm)
 
 ```
 
 We also use *bootstrap* to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe only one significant coefficients. 
-```{r eval=TRUE}
+```{r eval = FALSE}
 s_fiml <- summary(fimllm, Nbt=20)
 s_fiml
 ```
 
 ### Visualization 
 We visualize the p-vaules of each methods , where red line denotes 0.05 in y-axis and blue line 0.1 in y-axis.
-```{r eval=TRUE}
+```{r eval = FALSE}
 pMat <- cbind(CC=s_cc$coefficients[,4], ILSE=s2[,4], FIML=s_fiml[,4])
 library(ggplot2)
 df1 <- data.frame(Pval= as.vector(pMat[-1,]),

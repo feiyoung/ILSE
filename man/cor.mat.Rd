@@ -35,4 +35,4 @@
   cor.mat(5, 0.5)
   cor.mat(5, 0.5, type='identity')
 }
-\keyword{correlation matrix}
+

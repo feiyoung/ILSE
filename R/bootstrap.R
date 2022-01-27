@@ -1,35 +1,31 @@
-bootstrap <- function(x, ...) UseMethod("bootstrap")
+bootstrap <- function(obj, ...) UseMethod("bootstrap")
 
 bootstrap.ilse <- function(obj,repTimes=100){
   data <- obj$data
   formula <- obj$formula
   bw <- obj$inargs$bw
-  intercept <- obj$inargs$intercept
   k.type<- obj$inargs$k.type
-  bw.type <- obj$inargs$bw.type
-  K <- obj$inargs$K
   method <- obj$inargs$method
   max.iter <- obj$inargs$max.iter
   peps <- obj$inargs$peps
   feps  <- obj$inargs$ feps
   infor_output <- F
-  if(!intercept){
-    real_p <- ncol(data)
-  }else{
-    real_p <- ncol(data)-1
-  }
+  form <- terms(formula, data=data)
+  real_p <- ncol(data)-1
+
+
   n <- nrow(data)
   message('===================Start bootstrapping================\n')
   res.par <- matrix(nrow=repTimes, ncol=real_p)
   for(k in 1:repTimes)
   {
+    # k <- 1
     set.seed(k)
     ind <- sample(1:n, n, replace = T)
     data1 <- data[ind, ]
     disProBar(k, repTimes)
-    try(coef.par <- ilse(formula, data1, bw,  intercept, k.type,K,
-                           bw.type , method, max.iter,
-                           peps, feps,infor_output)$beta, silent = T)
+    try(coef.par <- ilse(formula, data1, bw, k.type, method, max.iter,
+                           peps, feps,infor_output)$beta, silent = TRUE)
     res.par[k, ] <- coef.par
   }
   message('===================Finish bootstrapping================\n')

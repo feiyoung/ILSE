@@ -18,14 +18,14 @@ knitr::opts_chunk$set(
 
 ### Load real data
 First, we load the 'ILSE' package and the real data which can be loaded by following command.
-```{r}
+```{r eval=FALSE}
 library("ILSE")
 data("nhanes")
 ```
 
 ### Fit linear regression model
 We fit the linear regression model using 'ILSE' function, and then compare with *CC* method and *FIML* method.
-```{r}
+```{r eval=FALSE}
 ncomp <- sum(complete.cases(nhanes))
 message("Number of complete cases is ", ncomp, '\n')
 ilse2 <- ilse(age~., data=nhanes, infor_output=T)
@@ -33,7 +33,8 @@ print(ilse2)
 ```
 
 Next, *Bootstrap* is applied to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe four significant coefficients. 
-```{r eval = TRUE}
+```{r eval = FALSE}
+set.seed(1)
 s2 <- summary(ilse2, Nbt=20)
 s2
 ```
@@ -41,26 +42,26 @@ s2
 ### Compare with CC and FIML
 
 First, we conduct CC analysis.
-```{r}
+```{r eval=FALSE}
 lm1 <- lm(age~., data=nhanes)
 s_cc <- summary.lm(lm1)
 s_cc
 ```
 
 We fit linear regression model using FIML method.
-```{r}
+```{r eval=FALSE}
 fimllm <- fimlreg(age~., data=nhanes)
 print(fimllm)
 ```
 We also use *bootstrap* to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe only one significant coefficients. 
-```{r eval=TRUE}
+```{r eval=FALSE}
 s_fiml <- summary(fimllm, Nbt=20)
 s_fiml
 ```
 
 ### Visualization 
 We visualize the p-vaules of each methods, where red line denotes 0.05 in y-axis and blue line 0.1 in y-axis.
-```{r eval=TRUE}
+```{r eval=FALSE}
 pMat <- cbind(CC=s_cc$coefficients[,4], ILSE=s2[,4], FIML=s_fiml[,4])
 library(ggplot2)
 df1 <- data.frame(Pval= as.vector(pMat[-1,]),

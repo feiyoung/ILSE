@@ -3,7 +3,7 @@ kern <- function(u, type='epk'){
   if(!is.element(type, c('epk', 'biweight', 'triangle',
                          'gaussian', 'triweight', 'tricube', 'cosine', 'uniform')))
     stop("type must belong to 'epk', 'biweight', 'triangle',
-         'guassian', 'triweight', 'tricube', 'cosine', 'uniform'!")
+         'gaussian', 'triweight', 'tricube', 'cosine', 'uniform'!")
   if (type=="epk") f = 0.75*(1-u^2)*(u<=1& u>=-1)
   else if (type=='biweight') f = (15/16)*(1 - u^2)^2*(u<=1& u>=-1 )
   else if (type=='triangle') f = (1-abs(u))*(u<=1& u>=-1)

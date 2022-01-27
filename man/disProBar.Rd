@@ -20,4 +20,3 @@ disProBar(k, NN)
 \value{
   No velue returned.
 }
-\keyword{display running process}

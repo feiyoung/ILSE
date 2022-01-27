@@ -1,22 +1,27 @@
 \name{ilse}
 \alias{ilse}
+\alias{ilse.numeric}
+\alias{ilse.formula}
 \title{Linear Regression by Iterative Least Square Estimation}
 \description{
   Linear regression when covariates include missing values embedding the
-    correlation imformation bettwen covariates by Iterative Least Square Estimation.
+    correlation information between  covariates by Iterative Least Square Estimation.
 }
 \usage{
-  ilse(formula, data,  bw=NULL, intercept=F,k.type=NULL,bw.type='fix.bw',K=NULL,method="Par.cond", max.iter=50, peps=1e-7, feps = 1e-7,infor_output=F)
+  ilse(...)
+  \method{ilse}{formula}(formula, data=NULL, bw=NULL,  k.type=NULL,  method="Par.cond", ...)
+  \method{ilse}{numeric}(Y, X, bw=NULL,  k.type=NULL,method="Par.cond",
+      max.iter=50, peps=1e-5, feps = 1e-7,infor_output=FALSE, ...)
 }
 \arguments{
+  \item{...}{Arguments passed to other methods.}
   \item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
+  \item{Y}{a numeric vector, the reponse variable.}
+  \item{X}{a numeric matrix that may include NAs, the covariate matrix.}
   \item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which ilse is called.}
   \item{bw}{a positive value, specify the bandwidth in estimating missing values, default as NULL. When bw=NULL, it is automatically selected by empirical method.}
-  \item{intercept}{a optional logical value, indicate whether X or data including intercept term (full-one column), default as 'FALSE'.}
-  \item{k.type}{an optional character string, specify the type of kernel used in iterative estimating algorithm and support 'epk', 'biweight', 'triangle', 'guassian', 'triweight', 'tricube', 'cosine', 'uniform' in current version, defualt as 'guassian'.}
-  \item{bw.type}{an optional character string, specify the type of kernel bandwidth, only support 'fix.bw'(fixed bandwidth) in current version, may spport variable bandwidth in future version, defualt as 'fix.bw'.}
-  \item{K}{an optional positive integer, specify the sample size used in kernel estimates when choose the variable bandwidth.}
-  \item{method}{an optional character string, specify the iterative algorithm, only support 'Par.cond' and 'Full.cond' in current version and will support  'SGD' in future version.}
+  \item{k.type}{an optional character string, specify the type of kernel used in iterative estimating algorithm and support 'epk', 'biweight', 'triangle', 'gaussian', 'triweight', 'tricube', 'cosine', 'uniform' in current version, defualt as 'gaussian'.}
+  \item{method}{an optional character string, specify the iterative algorithm,  support 'Par.cond' and 'Full.cond' in current version.}
   \item{max.iter}{an optional positive integer, the maximum iterative times, defualt as '50'.}
   \item{peps}{an optional positive value, tolerance vlaue of relative variation rate of estimated parametric vector, defualt as '1e-7'.}
   \item{feps}{an optional positive vlaue, tolerance vlaue of relative variation rate of objective function value, defualt as '1e-7'.}
@@ -42,8 +47,7 @@ An object of class "NAlm" is a list containing at least the following components
 \item{inargs}{a list including all input arguments.}
 }
 \references{
-  Huazhen Lin, Wei Liu, Wei Lan(2019). Regression Analysis with individual-specific
-patterns of missing covariates.
+  Huazhen Lin, Wei Liu, & Wei Lan (2021). Regression Analysis with individual-specific patterns of missing covariates. Journal of Business & Economic Statistics, 39(1), 179-188.
 }
 \author{
 Wei Liu
@@ -59,14 +63,17 @@ nothing
 data(nhanes)
 NAlm1 <- ilse(age~., data=nhanes, method = 'Full.cond')
 NAlm1
-NAlm2 <- ilse(age~., data=nhanes,bw=1,bw.type = 'fix.bw',method = 'Par.cond', k.type='gaussian', infor_output = T)
+NAlm2 <- ilse(age~., data=nhanes,bw=1,bw.type = 'fix.bw',
+   method = 'Par.cond', k.type='gaussian', infor_output = TRUE)
 
 ## example two: No missing value
 n <- 100
 group <- rnorm(n, sd=4)
 weight <- 3.2*group + 1.5 + rnorm(n, sd=0.1)
-NAlm3 <- ilse(weight~group, data=data.frame(weight=weight, group=group), intercept = F)
+NAlm3 <- ilse(weight~group, data=data.frame(weight=weight, group=group),
+   intercept = FALSE)
 NAlm3
 
 }
-\keyword{Linear Model, Missing Value.}
+\keyword{Linear Model}
+\concept{Missing Value}

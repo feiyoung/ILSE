@@ -29,8 +29,7 @@ u <- seq(-1,1,by=0.01)
 (Ku <- kern(u))
 plot(u, Ku, type='l')
 # guassian kernel
-plot(u, kern(u, type='guassian'), type ='l')
+plot(u, kern(u, type='gaussian'), type ='l')
 # cosine kernel
 plot(u, Ku <- kern(u, type='cosine'), type ='l')
 }
-\keyword{Linear Model, Missing Value.}

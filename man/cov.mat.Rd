@@ -35,4 +35,3 @@
   cov.mat(rep(5,5), 0.5)
   cov.mat(c(2,4,3), 0.5, type='identity')
 }
-\keyword{covariance matrix}

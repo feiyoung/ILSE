@@ -25,6 +25,5 @@ age: {Age group (1=20-39, 2=40-59, 3=60+).}
 # example one
 data(nhanes)
 bw <- 1
-clse(age~., data=nhanes,bw=bw)
+ilse(age~., data=nhanes,bw=bw)
 }
-\keyword{nhanes}

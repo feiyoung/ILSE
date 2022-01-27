@@ -1,12 +1,20 @@
-\name{summary.ilse}
+\name{summary}
+\alias{summary}
 \alias{summary.ilse}
-\title{Summarizing Iterative Least Square Estimation Regression When Covariates Include Missing Values}
+\alias{summary.fiml}
+\alias{Fitted.values}
+\alias{Residuals}
+\title{Summarizing the inference information for ILSE or FIML methods}
 \description{
-  summary method for class "ilse"
+  summary method for class "ilse" or "fiml".
 }
 \usage{
-  ## S3 method for class 'ilse'
   summary(object, Nbt=100)
+
+  \method{summary}{ilse}(object, Nbt=100)
+
+  \method{summary}{fiml}(object, Nbt=100)
+
   ##
   Fitted.values(object)
   ##
@@ -19,7 +27,7 @@
 }
 
 \value{
-  The function summary.ilse computes and returns a named matrix of summary statistics of the fitted linear model given in object by corrected least square estimation.
+  The function summary.ilse computes and returns a named matrix of summary statistics of the fitted linear model given in object by ILSE or FIML methods.
   The function Fitted.values return a vector, fitted repsonse vlaues.
   The function Residuals return a vector, residuals.
 }
@@ -32,6 +40,8 @@ residuals
 # example one
 data(nhanes)
 NAlm <- ilse(age~., data=nhanes)
-summary(NAlm, Nbt=50)
+summary(NAlm, Nbt=5)
+
+fimllm <- fimlreg(age~., data=nhanes, iterlim= 40)
+summary(fimllm, Nbt = 5)
 }
-\keyword{summary}
