@@ -13,7 +13,7 @@ kern.est <-function(ind, beta, Xmat, Y,IDX, bw, k.type=NULL){
 
   i.peer <-Reduce(intersect,IDX[Pi])
   Pi.peer <- which(is.na(Xmat[ind,]))
-  for (j in 1:p){
+  for (j in 1:p){ # impute for each variables
     ij.peer <- intersect(i.peer,IDX[[j]])
     n_ijp <- length(ij.peer)
 

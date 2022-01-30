@@ -1,7 +1,7 @@
 Package: ILSE
 Type: Package
 Title: Linear Regression Based on 'ILSE' for Missing Data
-Version: 1.1.6
+Version: 1.1.7
 License: GPL-3
 Authors@R: 
     c(person(given = "Wei",
@@ -28,11 +28,11 @@ LazyData: true
 Date: 2021-12-25
 Depends:
     R (>= 3.0.1)
-Imports: stats
+Imports: stats, Rcpp, pbapply
 Suggests: 
     knitr,
     rmarkdown
-LinkingTo: Rcpp
+LinkingTo: Rcpp, RcppArmadillo
 VignetteBuilder: knitr
 NeedsCompilation: no
 RoxygenNote: 7.1.1

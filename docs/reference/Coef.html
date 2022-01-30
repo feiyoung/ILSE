@@ -98,16 +98,21 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/ILSE.Realdata.html">ILSE: A Simple NHANES example</a>
+      <a href="../articles/ILSE.Realdata.html">ILSE: a simple NHANES example</a>
     </li>
     <li>
-      <a href="../articles/ILSE.Simu.html">ILSE: installation and simulated example</a>
+      <a href="../articles/ILSE.Simu.html">ILSE: simulated examples</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/feiyoung/ILSE/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -153,8 +158,8 @@
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>nhanes</span><span class='op'>)</span>
 <span class='va'>NAlm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ilse.html'>ilse</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span><span class='op'>)</span>
 <span class='fu'>Coef</span><span class='op'>(</span><span class='va'>NAlm2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   intercept         bmi         hyp         chl 
-#&gt;  2.05238803 -0.11489654  0.61513666  0.01047711 </div></pre>
+</div><div class='output co'>#&gt; (Intercept)         bmi         hyp         chl 
+#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Linear Regression by Iterative Least Square Estimation — ilse" />
 <meta property="og:description" content="Linear regression when covariates include missing values embedding the
-    correlation imformation bettwen covariates by Iterative Least Square Estimation." />
+    correlation information between  covariates by Iterative Least Square Estimation." />
 
 
 
@@ -99,16 +99,21 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/ILSE.Realdata.html">ILSE: A Simple NHANES example</a>
+      <a href="../articles/ILSE.Realdata.html">ILSE: a simple NHANES example</a>
     </li>
     <li>
-      <a href="../articles/ILSE.Simu.html">ILSE: installation and simulated example</a>
+      <a href="../articles/ILSE.Simu.html">ILSE: simulated examples</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/feiyoung/ILSE/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -129,17 +134,34 @@
 
     <div class="ref-description">
     <p>Linear regression when covariates include missing values embedding the
-    correlation imformation bettwen covariates by Iterative Least Square Estimation.</p>
+    correlation information between  covariates by Iterative Least Square Estimation.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ilse</span><span class='op'>(</span><span class='va'>formula</span>, <span class='va'>data</span>,  bw<span class='op'>=</span><span class='cn'>NULL</span>, intercept<span class='op'>=</span><span class='cn'>F</span>,k.type<span class='op'>=</span><span class='cn'>NULL</span>,bw.type<span class='op'>=</span><span class='st'>'fix.bw'</span>,K<span class='op'>=</span><span class='cn'>NULL</span>,method<span class='op'>=</span><span class='st'>"Par.cond"</span>, max.iter<span class='op'>=</span><span class='fl'>50</span>, peps<span class='op'>=</span><span class='fl'>1e-7</span>, feps <span class='op'>=</span> <span class='fl'>1e-7</span>,infor_output<span class='op'>=</span><span class='cn'>F</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ilse</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
+  <span class='co'># S3 method for formula</span>
+<span class='fu'>ilse</span><span class='op'>(</span><span class='va'>formula</span>, data<span class='op'>=</span><span class='cn'>NULL</span>, bw<span class='op'>=</span><span class='cn'>NULL</span>,  k.type<span class='op'>=</span><span class='cn'>NULL</span>,  method<span class='op'>=</span><span class='st'>"Par.cond"</span>, <span class='va'>...</span><span class='op'>)</span>
+  <span class='co'># S3 method for numeric</span>
+<span class='fu'>ilse</span><span class='op'>(</span><span class='va'>Y</span>, <span class='va'>X</span>,bw<span class='op'>=</span><span class='cn'>NULL</span>, k.type<span class='op'>=</span><span class='cn'>NULL</span>, method<span class='op'>=</span><span class='st'>"Par.cond"</span>, max.iter<span class='op'>=</span><span class='fl'>20</span>,
+  peps<span class='op'>=</span><span class='fl'>1e-5</span>, feps <span class='op'>=</span> <span class='fl'>1e-7</span>, arma<span class='op'>=</span><span class='cn'>TRUE</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>...</th>
+      <td><p>Arguments passed to other methods.</p></td>
+    </tr>
+    <tr>
       <th>formula</th>
       <td><p>an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
+    </tr>
+    <tr>
+      <th>Y</th>
+      <td><p>a numeric vector, the reponse variable.</p></td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td><p>a numeric matrix that may include NAs, the covariate matrix.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -150,39 +172,31 @@
       <td><p>a positive value, specify the bandwidth in estimating missing values, default as NULL. When bw=NULL, it is automatically selected by empirical method.</p></td>
     </tr>
     <tr>
-      <th>intercept</th>
-      <td><p>a optional logical value, indicate whether X or data including intercept term (full-one column), default as 'FALSE'.</p></td>
-    </tr>
-    <tr>
       <th>k.type</th>
-      <td><p>an optional character string, specify the type of kernel used in iterative estimating algorithm and support 'epk', 'biweight', 'triangle', 'guassian', 'triweight', 'tricube', 'cosine', 'uniform' in current version, defualt as 'guassian'.</p></td>
-    </tr>
-    <tr>
-      <th>bw.type</th>
-      <td><p>an optional character string, specify the type of kernel bandwidth, only support 'fix.bw'(fixed bandwidth) in current version, may spport variable bandwidth in future version, defualt as 'fix.bw'.</p></td>
-    </tr>
-    <tr>
-      <th>K</th>
-      <td><p>an optional positive integer, specify the sample size used in kernel estimates when choose the variable bandwidth.</p></td>
+      <td><p>an optional character string, specify the type of kernel used in iterative estimating algorithm and support 'epk', 'biweight', 'triangle', 'gaussian', 'triweight', 'tricube', 'cosine', 'uniform' in current version, defualt as 'gaussian'.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>an optional character string, specify the iterative algorithm, only support 'Par.cond' and 'Full.cond' in current version and will support  'SGD' in future version.</p></td>
+      <td><p>an optional character string, specify the iterative algorithm,  support 'Par.cond' and 'Full.cond' in current version.</p></td>
     </tr>
     <tr>
       <th>max.iter</th>
-      <td><p>an optional positive integer, the maximum iterative times, defualt as '50'.</p></td>
+      <td><p>an optional positive integer, the maximum iterative times, defualt as '20'.</p></td>
     </tr>
     <tr>
       <th>peps</th>
-      <td><p>an optional positive value, tolerance vlaue of relative variation rate of estimated parametric vector, defualt as '1e-7'.</p></td>
+      <td><p>an optional positive value, tolerance vlaue of relative variation rate of estimated parametric vector, default as '1e-7'.</p></td>
     </tr>
     <tr>
       <th>feps</th>
-      <td><p>an optional positive vlaue, tolerance vlaue of relative variation rate of objective function value, defualt as '1e-7'.</p></td>
+      <td><p>an optional positive vlaue, tolerance vlaue of relative variation rate of objective function value, default as '1e-7'.</p></td>
     </tr>
     <tr>
-      <th>infor_output</th>
+      <th>arma</th>
+      <td><p>an optional logical value, whether use armadillo and Rcpp to speed computation, default as TRUE</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
       <td><p>an optional logical value, indicate whether output the iterative information, default as 'TRUE'.</p></td>
     </tr>
     </table>
@@ -192,11 +206,11 @@
     <p>Models for ilse are specified symbolically. A typical model has the form response ~ terms where response is the (numeric) response vector and terms is a series of terms which specifies a linear predictor for response. A terms specification of the form first + second indicates all the terms in first together with all the terms in second with duplicates removed. A specification of the form first:second indicates the set of terms obtained by taking the interactions of all terms in first with all terms in second. The specification first*second indicates the cross of first and second. This is the same as first + second + first:second.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>ilse returns an object of class "NAlm".</p>
+    <p>ilse returns an object of class "ilse".</p>
 <p>The functions summary and anova are used to obtain and print a summary and analysis of variance table of the results. The generic accessor functions coefficients, effects, fitted.values and residuals extract various useful features of the value returned by lm.</p>
-<p>An object of class "NAlm" is a list containing at least the following components:</p>
+<p>An object of class "ilse" is a list containing at least the following components:</p>
 <dt>beta</dt><dd><p>a named vector of coefficients</p></dd>
-<dt>Bmat</dt><dd><p>a named matrix that summary the estimated beta in every iteration.</p></dd>
+<dt>hX</dt><dd><p>a imputed design matrix</p></dd>
 <dt>d.fn</dt><dd><p>a nonnegative value, vlaue of relative variation rate of objective function value</p></dd>
 <dt>d.par</dt><dd><p>a nonnegative value, relative variation rate of estimated parametric vector when algorithm stopped.</p></dd>
 <dt>iterations</dt><dd><p>a positive integer, iterative times in total.</p></dd>
@@ -206,8 +220,7 @@
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Huazhen Lin, Wei Liu, Wei Lan(2019). Regression Analysis with individual-specific
-patterns of missing covariates.</p>
+    <p>Huazhen Lin, Wei Liu, &amp; Wei Lan (2021). Regression Analysis with individual-specific patterns of missing covariates. Journal of Business &amp; Economic Statistics, 39(1), 179-188.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Wei Liu</p>
@@ -221,362 +234,58 @@ patterns of missing covariates.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## exmaple one: include missing value</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>nhanes</span><span class='op'>)</span>
-<span class='va'>NAlm1</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span>, method <span class='op'>=</span> <span class='st'>'Full.cond'</span><span class='op'>)</span>
-<span class='va'>NAlm1</span>
+<span class='va'>NAlm1</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span>,bw<span class='op'>=</span><span class='fl'>1</span>,
+   method <span class='op'>=</span> <span class='st'>'Par.cond'</span>, k.type<span class='op'>=</span><span class='st'>'gaussian'</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; iter=2, d_fn=1.000000, d_par = 0.362223 
+#&gt; iter=3, d_fn=0.001542, d_par = 0.001063 
+#&gt; iter=4, d_fn=0.000009, d_par = 0.000021 
+#&gt; iter=5, d_fn=0.000000, d_par = 0.000000 </div><div class='input'><span class='fu'><a href='print.html'>print</a></span><span class='op'>(</span><span class='va'>NAlm1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $beta
-#&gt;   intercept         bmi         hyp         chl 
-#&gt;  2.04634007 -0.11517617  0.51620712  0.01118342 
-#&gt; 
-#&gt; $Bmat
-#&gt;           [,1]       [,2]      [,3]       [,4]
-#&gt; iter0 1.773958 -0.1040127 0.4108214 0.01129992
-#&gt; iter1 2.050373 -0.1152149 0.5131551 0.01118582
-#&gt; iter2 2.046408 -0.1151781 0.5161661 0.01118350
-#&gt; iter3 2.046340 -0.1151762 0.5162068 0.01118342
-#&gt; iter4 2.046340 -0.1151762 0.5162071 0.01118342
+#&gt; (Intercept)         bmi         hyp         chl 
+#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 
 #&gt; 
 #&gt; $d.fn
-#&gt; [1] 1.271989e-07
+#&gt; [1] 6.654795e-08
 #&gt; 
 #&gt; $d.par
-#&gt; [1] 1.725446e-07
+#&gt; [1] 1.096466e-07
 #&gt; 
 #&gt; $iterations
-#&gt; [1] 4
+#&gt; [1] 5
+#&gt; </div><div class='input'><span class='va'>NAlm2</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span>, method <span class='op'>=</span> <span class='st'>'Full.cond'</span><span class='op'>)</span>
+<span class='fu'><a href='print.html'>print</a></span><span class='op'>(</span><span class='va'>NAlm2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $beta
+#&gt; (Intercept)         bmi         hyp         chl 
+#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 
 #&gt; 
-#&gt; $residuals
-#&gt;           1           2           3           4           5           6 
-#&gt; -0.76520991 -0.01847994 -0.54533187  1.23479009 -0.50728378  1.37869100 
-#&gt;           7           8           9          10          11          12 
-#&gt; -0.31785603 -0.16618742 -0.63398047  0.23479009 -0.76520991  0.23479009 
-#&gt;          13          14          15          16          17          18 
-#&gt;  0.66707702 -0.12386915 -0.26632962 -0.76520991 -0.13565588 -0.34784930 
-#&gt;          19          20          21          22          23          24 
-#&gt;  0.10759875  0.65511924 -0.76520991 -0.24963395  0.12167577  1.20543619 
-#&gt;          25 
-#&gt;  0.53332879 
+#&gt; $d.fn
+#&gt; [1] 6.654795e-08
 #&gt; 
-#&gt; $fitted.values
-#&gt;         1         2         3         4         5         6         7         8 
-#&gt; 1.7652099 2.0184799 1.5453319 1.7652099 1.5072838 1.6213090 1.3178560 1.1661874 
-#&gt;         9        10        11        12        13        14        15        16 
-#&gt; 2.6339805 1.7652099 1.7652099 1.7652099 2.3329230 2.1238691 1.2663296 1.7652099 
-#&gt;        17        18        19        20        21        22        23        24 
-#&gt; 3.1356559 2.3478493 0.8924013 2.3448808 1.7652099 1.2496339 0.8783242 1.7945638 
-#&gt;        25 
-#&gt; 1.4666712 
+#&gt; $d.par
+#&gt; [1] 1.096466e-07
 #&gt; 
-#&gt; $inargs
-#&gt; $inargs$bw
-#&gt; [1] 1
-#&gt; 
-#&gt; $inargs$intercept
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $inargs$k.type
-#&gt; NULL
-#&gt; 
-#&gt; $inargs$bw.type
-#&gt; [1] "fix.bw"
-#&gt; 
-#&gt; $inargs$K
-#&gt; NULL
-#&gt; 
-#&gt; $inargs$method
-#&gt; [1] "Full.cond"
-#&gt; 
-#&gt; $inargs$max.iter
-#&gt; [1] 50
-#&gt; 
-#&gt; $inargs$peps
-#&gt; [1] 1e-05
-#&gt; 
-#&gt; $inargs$feps
-#&gt; [1] 1e-07
-#&gt; 
-#&gt; $inargs$infor_output
-#&gt; [1] FALSE
-#&gt; 
-#&gt; 
-#&gt; $call
-#&gt; clse(formula = age ~ ., data = nhanes, method = "Full.cond")
-#&gt; 
-#&gt; $formula
-#&gt; age ~ .
-#&gt; &lt;environment: 0x000000002c0f8218&gt;
-#&gt; 
-#&gt; $data
-#&gt;    age  bmi hyp chl
-#&gt; 1    1   NA  NA  NA
-#&gt; 2    2 22.7   1 187
-#&gt; 3    1   NA   1 187
-#&gt; 4    3   NA  NA  NA
-#&gt; 5    1 20.4   1 113
-#&gt; 6    3   NA  NA 184
-#&gt; 7    1 22.5   1 118
-#&gt; 8    1 30.1   1 187
-#&gt; 9    2 22.0   1 238
-#&gt; 10   2   NA  NA  NA
-#&gt; 11   1   NA  NA  NA
-#&gt; 12   2   NA  NA  NA
-#&gt; 13   3 21.7   1 206
-#&gt; 14   2 28.7   2 204
-#&gt; 15   1 29.6   1  NA
-#&gt; 16   1   NA  NA  NA
-#&gt; 17   3 27.2   2 284
-#&gt; 18   2 26.3   2 199
-#&gt; 19   1 35.3   1 218
-#&gt; 20   3 25.5   2  NA
-#&gt; 21   1   NA  NA  NA
-#&gt; 22   1 33.2   1 229
-#&gt; 23   1 27.5   1 131
-#&gt; 24   3 24.9   1  NA
-#&gt; 25   2 27.4   1 186
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "ilse"</div><div class='input'><span class='va'>NAlm2</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>age</span><span class='op'>~</span><span class='va'>.</span>, data<span class='op'>=</span><span class='va'>nhanes</span>,bw<span class='op'>=</span><span class='fl'>1</span>,bw.type <span class='op'>=</span> <span class='st'>'fix.bw'</span>,method <span class='op'>=</span> <span class='st'>'Par.cond'</span>, k.type<span class='op'>=</span><span class='st'>'gaussian'</span>, infor_output <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>iter:0d.fn:NAd.par:NA</span></div><div class='output co'>#&gt; <span class='message'>par:1.77-0.10.410.01</span></div><div class='output co'>#&gt; <span class='message'>iter:1d.fn:0.00126549287943754d.par:0.158800467611634</span></div><div class='output co'>#&gt; <span class='message'>coefs:2.06-0.120.620.01</span></div><div class='output co'>#&gt; <span class='message'>iter:2d.fn:0.00199253706347666d.par:0.00219612310896849</span></div><div class='output co'>#&gt; <span class='message'>coefs:2.05-0.110.620.01</span></div><div class='output co'>#&gt; <span class='message'>iter:3d.fn:2.59094226751189e-05d.par:2.91764380510912e-05</span></div><div class='output co'>#&gt; <span class='message'>coefs:2.05-0.110.620.01</span></div><div class='output co'>#&gt; <span class='message'>iter:4d.fn:3.85951952865251e-07d.par:3.20422782331222e-07</span></div><div class='output co'>#&gt; <span class='message'>coefs:2.05-0.110.620.01</span></div><div class='input'>
-<span class='co'>## example two: No missing value</span>
+#&gt; $iterations
+#&gt; [1] 5
+#&gt; </div><div class='input'><span class='co'>## example two: No missing value</span>
 <span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
 <span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span>, sd<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span>
 <span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fl'>3.2</span><span class='op'>*</span><span class='va'>group</span> <span class='op'>+</span> <span class='fl'>1.5</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span>, sd<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span>
-<span class='va'>NAlm3</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>weight</span><span class='op'>~</span><span class='va'>group</span>, data<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>weight<span class='op'>=</span><span class='va'>weight</span>, group<span class='op'>=</span><span class='va'>group</span><span class='op'>)</span>, intercept <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
-<span class='va'>NAlm3</span>
+<span class='va'>NAlm3</span> <span class='op'>&lt;-</span> <span class='fu'>ilse</span><span class='op'>(</span><span class='va'>weight</span><span class='op'>~</span><span class='va'>group</span>, data<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>weight<span class='op'>=</span><span class='va'>weight</span>, group<span class='op'>=</span><span class='va'>group</span><span class='op'>)</span>,
+   intercept <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'><a href='print.html'>print</a></span><span class='op'>(</span><span class='va'>NAlm3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $beta
-#&gt; intercept     group 
-#&gt;  1.492943  3.198031 
-#&gt; 
-#&gt; $Bmat
-#&gt;           [,1]     [,2]
-#&gt; iter0 1.492943 3.198031
-#&gt; iter1 1.492943 3.198031
+#&gt; (Intercept)       group 
+#&gt;    1.518525    3.197213 
 #&gt; 
 #&gt; $d.fn
-#&gt; [1] 0
-#&gt; 
-#&gt; $d.par
-#&gt; [1] 0
-#&gt; 
-#&gt; $iterations
 #&gt; [1] 1
 #&gt; 
-#&gt; $residuals
-#&gt;            1            2            3            4            5            6 
-#&gt;  0.021348644 -0.016931183 -0.135621509  0.124327475  0.025717648  0.045299851 
-#&gt;            7            8            9           10           11           12 
-#&gt;  0.042226617  0.067103317  0.047893000  0.135955929  0.067310672 -0.018016112 
-#&gt;           13           14           15           16           17           18 
-#&gt;  0.037923428 -0.249757447  0.114894137  0.020889714 -0.134906394  0.046984303 
-#&gt;           19           20           21           22           23           24 
-#&gt;  0.105801750  0.036893870 -0.008975084 -0.029406094  0.154011720 -0.083842579 
-#&gt;           25           26           27           28           29           30 
-#&gt;  0.031230245  0.035142202 -0.209946101  0.112695029  0.062659916  0.029659305 
-#&gt;           31           32           33           34           35           36 
-#&gt; -0.181492425  0.016007123 -0.096221963  0.192066167  0.142228363 -0.075127282 
-#&gt;           37           38           39           40           41           42 
-#&gt;  0.061830301  0.090571403 -0.030365118  0.030136798 -0.098025713 -0.127419226 
-#&gt;           43           44           45           46           47           48 
-#&gt;  0.105237917 -0.063219186 -0.081396978  0.139261594 -0.121965396  0.052666561 
-#&gt;           49           50           51           52           53           54 
-#&gt; -0.064995018 -0.256957068  0.286883573  0.043723643 -0.048703645  0.006047338 
-#&gt;           55           56           57           58           59           60 
-#&gt; -0.002938833 -0.007950348 -0.008513384 -0.164739876 -0.087994266 -0.040051325 
-#&gt;           61           62           63           64           65           66 
-#&gt;  0.030375641 -0.015718579 -0.022239392  0.046338195  0.029218312 -0.221248988 
-#&gt;           67           68           69           70           71           72 
-#&gt;  0.007246629 -0.019856219  0.035411374 -0.178033957 -0.027497404  0.123836645 
-#&gt;           73           74           75           76           77           78 
-#&gt; -0.057810350  0.078906987 -0.056590580 -0.036755323  0.059554357  0.064816429 
-#&gt;           79           80           81           82           83           84 
-#&gt;  0.072459325 -0.085565245  0.002931726 -0.139982992  0.033252543  0.125502810 
-#&gt;           85           86           87           88           89           90 
-#&gt; -0.047652145 -0.008215222  0.105736619 -0.030920015  0.207499999 -0.046976782 
-#&gt;           91           92           93           94           95           96 
-#&gt; -0.136206567  0.181826016  0.076484440 -0.076706485 -0.077447902 -0.065165605 
-#&gt;           97           98           99          100 
-#&gt; -0.039984179 -0.011202839  0.012235847  0.020992873 
+#&gt; $d.par
+#&gt; [1] 1.986027e-15
 #&gt; 
-#&gt; $fitted.values
-#&gt;           1           2           3           4           5           6 
-#&gt;  -9.7973302  -4.7753323  23.9192353 -10.4076070   6.7104721   8.2688555 
-#&gt;           7           8           9          10          11          12 
-#&gt;  14.8426841  -1.3127210 -18.1961388  -3.9574415  -0.9931108  -2.6712333 
-#&gt;          13          14          15          16          17          18 
-#&gt;  10.8312868  -6.7093808  10.7905743   1.9700333   9.4432774  17.6742153 
-#&gt;          19          20          21          22          23          24 
-#&gt;  33.9258626 -16.6234956   9.4203531 -10.7199952   8.8246580 -20.8373030 
-#&gt;          25          26          27          28          29          30 
-#&gt; -12.3751460 -13.9800451   8.3310731 -15.3294672   0.3913476  -6.3923193 
-#&gt;          31          32          33          34          35          36 
-#&gt;  25.6501401  -3.1358843 -18.4916778  22.3129856  -3.4414407  -8.6539800 
-#&gt;          37          38          39          40          41          42 
-#&gt;  -0.7096777  -6.6468591  -7.7130562 -23.5472156 -11.1641074   5.5695714 
-#&gt;          43          44          45          46          47          48 
-#&gt;  15.2936608 -11.1416911 -15.5295778   8.3828295  24.1531686  11.0847163 
-#&gt;          49          50          51          52          53          54 
-#&gt;   1.0276458  12.8567905   1.8864106  -0.5763009 -17.9148860  10.0491589 
-#&gt;          55          56          57          58          59          60 
-#&gt;  -9.0733872  12.3446965  13.4222878  -7.7754536 -26.8328382  -6.6967375 
-#&gt;          61          62          63          64          65          66 
-#&gt;   6.8790688 -10.0155873   7.0161049  -7.5574609  22.4637086  22.0667039 
-#&gt;          67          68          69          70          71          72 
-#&gt;  15.8152517  -6.8981200  -7.8540059 -10.5182514  -7.0850845  -2.6708423 
-#&gt;          73          74          75          76          77          78 
-#&gt;  -8.7524848 -14.9376583  18.5003587  -7.4017131  12.6533691   0.6067947 
-#&gt;          79          80          81          82          83          84 
-#&gt;  14.3315885   0.7787594  22.7285509   9.2924408  14.4945914 -17.9871248 
-#&gt;          85          86          87          88          89          90 
-#&gt;  15.9682273   3.7987013  12.9234990   3.6446692   0.7101761   5.9220286 
-#&gt;          91          92          93          94          95          96 
-#&gt;  -8.2223783 -11.7058999  20.8087064  -0.2800254  -0.2560019  12.7545584 
-#&gt;          97          98          99         100 
-#&gt; -15.6596750  -1.8780949  -4.6667332  -2.1332247 
-#&gt; 
-#&gt; $inargs
-#&gt; $inargs$bw
-#&gt; [1] 2.745281
-#&gt; 
-#&gt; $inargs$intercept
-#&gt; [1] FALSE
-#&gt; 
-#&gt; $inargs$k.type
-#&gt; NULL
-#&gt; 
-#&gt; $inargs$bw.type
-#&gt; [1] "fix.bw"
-#&gt; 
-#&gt; $inargs$K
-#&gt; NULL
-#&gt; 
-#&gt; $inargs$method
-#&gt; [1] "Par.cond"
-#&gt; 
-#&gt; $inargs$max.iter
-#&gt; [1] 50
-#&gt; 
-#&gt; $inargs$peps
-#&gt; [1] 1e-05
-#&gt; 
-#&gt; $inargs$feps
-#&gt; [1] 1e-07
-#&gt; 
-#&gt; $inargs$infor_output
-#&gt; [1] FALSE
-#&gt; 
-#&gt; 
-#&gt; $call
-#&gt; clse(formula = weight ~ group, data = data.frame(weight = weight, 
-#&gt;     group = group), intercept = F)
-#&gt; 
-#&gt; $formula
-#&gt; weight ~ group
-#&gt; &lt;environment: 0x000000002c0f8218&gt;
-#&gt; 
-#&gt; $data
-#&gt;          weight      group
-#&gt; 1    -9.7759816 -3.5303824
-#&gt; 2    -4.7922635 -1.9600419
-#&gt; 3    23.7836138  7.0125307
-#&gt; 4   -10.2832795 -3.7212113
-#&gt; 5     6.7361898  1.6314816
-#&gt; 6     8.3141553  2.1187762
-#&gt; 7    14.8849108  4.1743623
-#&gt; 8    -1.2456176 -0.8773098
-#&gt; 9   -18.1482458 -6.1566259
-#&gt; 10   -3.8214855 -1.7042937
-#&gt; 11   -0.9258001 -0.7773701
-#&gt; 12   -2.6892495 -1.3021062
-#&gt; 13   10.8692102  2.9200289
-#&gt; 14   -6.9591383 -2.5648042
-#&gt; 15   10.9054684  2.9072984
-#&gt; 16    1.9909231  0.1491825
-#&gt; 17    9.3083710  2.4860090
-#&gt; 18   17.7211996  5.0597605
-#&gt; 19   34.0316644 10.1415268
-#&gt; 20  -16.5866017 -5.6648723
-#&gt; 21    9.4113781  2.4788407
-#&gt; 22  -10.7494013 -3.8188928
-#&gt; 23    8.9786697  2.2925714
-#&gt; 24  -20.9211456 -6.9824978
-#&gt; 25  -12.3439157 -4.3364458
-#&gt; 26  -13.9449029 -4.8382855
-#&gt; 27    8.1211270  2.1382311
-#&gt; 28  -15.2167722 -5.2602395
-#&gt; 29    0.4540075 -0.3444605
-#&gt; 30   -6.3626600 -2.4656615
-#&gt; 31   25.4686477  7.5537715
-#&gt; 32   -3.1198772 -1.4473991
-#&gt; 33  -18.5878998 -6.2490387
-#&gt; 34   22.5050518  6.5102687
-#&gt; 35   -3.2992124 -1.5429442
-#&gt; 36   -8.7291073 -3.1728655
-#&gt; 37   -0.6478474 -0.6887427
-#&gt; 38   -6.5562877 -2.5452541
-#&gt; 39   -7.7434213 -2.8786458
-#&gt; 40  -23.5170788 -7.8298668
-#&gt; 41  -11.2621331 -3.9577633
-#&gt; 42    5.4421522  1.2747306
-#&gt; 43   15.3988987  4.3153793
-#&gt; 44  -11.2049103 -3.9507538
-#&gt; 45  -15.6109748 -5.3228126
-#&gt; 46    8.5220911  2.1544150
-#&gt; 47   24.0312032  7.0856799
-#&gt; 48   11.1373828  2.9992744
-#&gt; 49    0.9626508 -0.1454949
-#&gt; 50   12.5998334  3.5533885
-#&gt; 51    2.1732941  0.1230343
-#&gt; 52   -0.5325772 -0.6470368
-#&gt; 53  -17.9635897 -6.0686803
-#&gt; 54   10.0552062  2.6754635
-#&gt; 55   -9.0763260 -3.3040110
-#&gt; 56   12.3367461  3.3932606
-#&gt; 57   13.4137744  3.7302152
-#&gt; 58   -7.9401935 -2.8981570
-#&gt; 59  -26.9208325 -8.8572560
-#&gt; 60   -6.7367888 -2.5608507
-#&gt; 61    6.9094444  1.6842005
-#&gt; 62  -10.0313059 -3.5986298
-#&gt; 63    6.9938655  1.7270506
-#&gt; 64   -7.5111227 -2.8299924
-#&gt; 65   22.4929270  6.5573986
-#&gt; 66   21.8454549  6.4332582
-#&gt; 67   15.8224983  4.4784768
-#&gt; 68   -6.9179762 -2.6238215
-#&gt; 69   -7.8185945 -2.9227197
-#&gt; 70  -10.6962854 -3.7558090
-#&gt; 71   -7.1125819 -2.6822839
-#&gt; 72   -2.5470057 -1.3019840
-#&gt; 73   -8.8102952 -3.2036672
-#&gt; 74  -14.8587514 -5.1377239
-#&gt; 75   18.4437681  5.3180893
-#&gt; 76   -7.4384684 -2.7812912
-#&gt; 77   12.7129235  3.4897802
-#&gt; 78    0.6716111 -0.2770919
-#&gt; 79   14.4040479  4.0145466
-#&gt; 80    0.6931942 -0.2233198
-#&gt; 81   22.7314827  6.6402128
-#&gt; 82    9.1524578  2.4388435
-#&gt; 83   14.5278439  4.0655164
-#&gt; 84  -17.8616220 -6.0912688
-#&gt; 85   15.9205751  4.5263111
-#&gt; 86    3.7904861  0.7209930
-#&gt; 87   13.0292356  3.5742477
-#&gt; 88    3.6137491  0.6728284
-#&gt; 89    0.9176761 -0.2447653
-#&gt; 90    5.8750519  1.3849413
-#&gt; 91   -8.3585849 -3.0379070
-#&gt; 92  -11.5240739 -4.1271776
-#&gt; 93   20.8851908  6.0398920
-#&gt; 94   -0.3567319 -0.5543937
-#&gt; 95   -0.3334498 -0.5468818
-#&gt; 96   12.6893928  3.5214213
-#&gt; 97  -15.6996592 -5.3634930
-#&gt; 98   -1.8892977 -1.0540979
-#&gt; 99   -4.6544973 -1.9260838
-#&gt; 100  -2.1122318 -1.1338750
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "ilse"</div><div class='input'>
+#&gt; $iterations
+#&gt; [1] 2
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

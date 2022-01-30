@@ -57,15 +57,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ILSE.Realdata.html">ILSE: A Simple NHANES example</a>
+      <a href="../articles/ILSE.Realdata.html">ILSE: a simple NHANES example</a>
     </li>
     <li>
-      <a href="../articles/ILSE.Simu.html">ILSE: installation and simulated example</a>
+      <a href="../articles/ILSE.Simu.html">ILSE: simulated examples</a>
     </li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/feiyoung/ILSE/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -81,31 +88,41 @@
       <h1 data-toc-skip>ILSE</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/feiyoung/ILSE/blob/master/vignettes/ILSE.Rmd"><code>vignettes/ILSE.Rmd</code></a></small>
       <div class="hidden name"><code>ILSE.Rmd</code></div>
 
     </div>
 
     
     
+<div id="install-the-ilse" class="section level2">
+<h2 class="hasAnchor">
+<a href="#install-the-ilse" class="anchor"></a>Install the ILSE</h2>
+<p>This vignette provides an introduction to the R package <code>ILSE</code>, where the function <code>ILSE</code> implements the model <code>ILSE</code>, Linear Regression by Iterative Least Square Estimation (ILSE) When Covariates Include Missing Values. The package can be installed with the command from <a href="https://github.com/feiyoung/ILSE">Github</a>:</p>
+<p><code><a href="https://remotes.r-lib.org">library(remotes)</a></code></p>
+<p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("feiyoung/ILSE")</a></code></p>
+<p>or install from <a href="https://cran.r-project.org/">CRAN</a></p>
+<p><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("ILSE")</a></code></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ILSE</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: mvnmle</span>
-<span class="co">#&gt; Loading required package: MASS</span>
-<span class="co">#&gt; Warning: package 'MASS' was built under R version 4.0.4</span>
-<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values embedding the</span>
-<span class="co">#&gt; correlation imformation bettwen covariates. Especially for block missing data,</span>
-<span class="co">#&gt; it works well. ILSE conduct imputation and regression simultaneouly and iteratively.</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/feiyoung/ILSE">ILSE</a></span><span class="op">)</span>
+<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values by embedding the</span>
+<span class="co">#&gt; correlation information between covariates. Especially for block missing data,</span>
+<span class="co">#&gt; it works well. 'ILSE' conducts imputation and regression simultaneously and iteratively.</span>
+<span class="co">#&gt; More details can be referred to</span>
+<span class="co">#&gt; Huazhen Lin, Wei Liu and Wei Lan. (2021) &lt;doi:10.1080/07350015.2019.1635486&gt;.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'ILSE'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     summary</span></code></pre></div>
+<span class="co">#&gt;     print, summary</span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

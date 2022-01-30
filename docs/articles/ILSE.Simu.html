@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILSE: installation and simulated example • ILSE</title>
+<title>ILSE: simulated examples • ILSE</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="ILSE: installation and simulated example">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ILSE: simulated examples">
 <meta property="og:description" content="ILSE">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -57,15 +57,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ILSE.Realdata.html">ILSE: A Simple NHANES example</a>
+      <a href="../articles/ILSE.Realdata.html">ILSE: a simple NHANES example</a>
     </li>
     <li>
-      <a href="../articles/ILSE.Simu.html">ILSE: installation and simulated example</a>
+      <a href="../articles/ILSE.Simu.html">ILSE: simulated examples</a>
     </li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/feiyoung/ILSE/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,198 +85,115 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>ILSE: installation and simulated example</h1>
+      <h1 data-toc-skip>ILSE: simulated examples</h1>
                         <h4 class="author">Wei Liu</h4>
             
-            <h4 class="date">2021-12-26</h4>
+            <h4 class="date">2022-01-30</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/feiyoung/ILSE/blob/master/vignettes/ILSE.Simu.Rmd"><code>vignettes/ILSE.Simu.Rmd</code></a></small>
       <div class="hidden name"><code>ILSE.Simu.Rmd</code></div>
 
     </div>
 
     
     
-<div id="install-the-ilse" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install-the-ilse" class="anchor"></a>Install the ILSE</h2>
-<p>This vignette provides an introduction to the R package <code>ILSE</code>, where the function <code>ILSE</code> implements the model <code>ILSE</code>, Linear Regression by Iterative Least Square Estimation (ILSE) When Covariates Include Missing Values. The package can be installed with the command from <a href="https://github.com/feiyoung/ILSE">Github</a>:</p>
-<p><code><a href="https://remotes.r-lib.org">library(remotes)</a></code></p>
-<p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("feiyoung/ILSE")</a></code></p>
-<p>or install from <a href="https://cran.r-project.org/">CRAN</a></p>
-<p><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("ILSE")</a></code></p>
+<div id="load-ilse-package" class="section level1">
+<h1 class="hasAnchor">
+<a href="#load-ilse-package" class="anchor"></a>Load ILSE package</h1>
 <p>The package can be loaded with the command:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"ILSE"</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: mvnmle</span>
-<span class="co">#&gt; Loading required package: MASS</span>
-<span class="co">#&gt; Warning: package 'MASS' was built under R version 4.0.4</span>
-<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values embedding the</span>
-<span class="co">#&gt; correlation imformation bettwen covariates. Especially for block missing data,</span>
-<span class="co">#&gt; it works well. ILSE conduct imputation and regression simultaneouly and iteratively.</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/feiyoung/ILSE">"ILSE"</a></span><span class="op">)</span>
+<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values by embedding the</span>
+<span class="co">#&gt; correlation information between covariates. Especially for block missing data,</span>
+<span class="co">#&gt; it works well. 'ILSE' conducts imputation and regression simultaneously and iteratively.</span>
+<span class="co">#&gt; More details can be referred to</span>
+<span class="co">#&gt; Huazhen Lin, Wei Liu and Wei Lan. (2021) &lt;doi:10.1080/07350015.2019.1635486&gt;.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'ILSE'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     summary</span></code></pre></div>
+<span class="co">#&gt;     print, summary</span></code></pre></div>
 </div>
-<div id="fit-linear-model-using-simulated-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fit-linear-model-using-simulated-data" class="anchor"></a>Fit linear model using simulated data</h2>
-<p>First, we generate the data with homogeneous normal variables.</p>
+<div id="ilse-can-handle-nonmissing-data-with-continuous-variables" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ilse-can-handle-nonmissing-data-with-continuous-variables" class="anchor"></a>ILSE can handle (non)missing data with continuous variables</h1>
+<p>First, we generate a small simulated data.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
+<code class="sourceCode R">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
   <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">6</span>
   <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="../reference/cor.mat.html">cor.mat</a></span><span class="op">(</span><span class="va">p</span>, rho<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
   <span class="va">beta0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
   <span class="va">Y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span><span class="op">+</span> <span class="va">X</span> <span class="op">%*%</span> <span class="va">beta0</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div id="a-special-case-without-missing-values" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-special-case-without-missing-values" class="anchor"></a>A special case: without missing values</h3>
+<div id="a-special-case-without-missing-values" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-special-case-without-missing-values" class="anchor"></a>A special case: without missing values</h2>
 <p>Then, we fit the linear regression model without missing values based on ILSE.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ilse1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">X</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
 <span class="co">#&gt; $beta</span>
-<span class="co">#&gt;  intercept         X1         X2         X3         X4         X5         X6 </span>
-<span class="co">#&gt; -1.9724071  0.8963815 -0.8172811  1.0873532 -1.2046588  1.0863035 -1.2066205 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Bmat</span>
-<span class="co">#&gt;            [,1]      [,2]       [,3]     [,4]      [,5]     [,6]     [,7]</span>
-<span class="co">#&gt; iter0 -1.972407 0.8963815 -0.8172811 1.087353 -1.204659 1.086303 -1.20662</span>
-<span class="co">#&gt; iter1 -1.972407 0.8963815 -0.8172811 1.087353 -1.204659 1.086303 -1.20662</span>
+<span class="co">#&gt; (Intercept)          X1          X2          X3          X4          X5 </span>
+<span class="co">#&gt;  -2.2022943   0.8959225  -1.0580583   1.0379296  -1.0645601   0.9041809 </span>
+<span class="co">#&gt;          X6 </span>
+<span class="co">#&gt;  -0.8213827 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.fn</span>
-<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; [1] 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.par</span>
-<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; [1] 2.164223e-15</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
 <p>We can also create a (data.frame) object as input for ILSE.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Y<span class="op">=</span><span class="va">Y</span>, X<span class="op">=</span><span class="va">X</span><span class="op">)</span>
 <span class="va">ilse1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">dat</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
 <span class="co">#&gt; $beta</span>
-<span class="co">#&gt;  intercept        X.1        X.2        X.3        X.4        X.5        X.6 </span>
-<span class="co">#&gt; -1.9724071  0.8963815 -0.8172811  1.0873532 -1.2046588  1.0863035 -1.2066205 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Bmat</span>
-<span class="co">#&gt;            [,1]      [,2]       [,3]     [,4]      [,5]     [,6]     [,7]</span>
-<span class="co">#&gt; iter0 -1.972407 0.8963815 -0.8172811 1.087353 -1.204659 1.086303 -1.20662</span>
-<span class="co">#&gt; iter1 -1.972407 0.8963815 -0.8172811 1.087353 -1.204659 1.086303 -1.20662</span>
+<span class="co">#&gt; (Intercept)         X.1         X.2         X.3         X.4         X.5 </span>
+<span class="co">#&gt;  -2.2022943   0.8959225  -1.0580583   1.0379296  -1.0645601   0.9041809 </span>
+<span class="co">#&gt;         X.6 </span>
+<span class="co">#&gt;  -0.8213827 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.fn</span>
-<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; [1] 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.par</span>
-<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt; [1] 2.164223e-15</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 2</span>
 <span class="fu"><a href="../reference/Coef.html">Coef</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span> <span class="co"># access the coefficients</span>
-<span class="co">#&gt;  intercept        X.1        X.2        X.3        X.4        X.5        X.6 </span>
-<span class="co">#&gt; -1.9724071  0.8963815 -0.8172811  1.0873532 -1.2046588  1.0863035 -1.2066205</span>
-<span class="fu">Fitted.values</span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
-<span class="co">#&gt;            1            2            3            4            5            6 </span>
-<span class="co">#&gt; -3.301038431  0.001721797 -3.976452572 -1.488277033 -2.265863493 -1.124607136 </span>
-<span class="co">#&gt;            7            8            9           10           11           12 </span>
-<span class="co">#&gt; -0.376241657 -2.122324777 -2.244536902 -0.086661879 -1.446655657 -2.465898254 </span>
-<span class="co">#&gt;           13           14           15           16           17           18 </span>
-<span class="co">#&gt; -5.301750695  1.271897394  0.054244710 -5.389067156 -4.124146421 -2.908147623 </span>
-<span class="co">#&gt;           19           20           21           22           23           24 </span>
-<span class="co">#&gt; -4.617881556 -4.346962379 -1.576947951 -0.319118627 -3.033435773 -3.496246441 </span>
-<span class="co">#&gt;           25           26           27           28           29           30 </span>
-<span class="co">#&gt; -1.899484860 -2.829476884 -0.171117800 -1.768237919 -2.017783217 -1.864186856 </span>
-<span class="co">#&gt;           31           32           33           34           35           36 </span>
-<span class="co">#&gt; -5.911697172 -4.549562174 -0.314633056 -0.653305889 -3.312663703 -0.341187797 </span>
-<span class="co">#&gt;           37           38           39           40           41           42 </span>
-<span class="co">#&gt;  0.501973174 -1.783019551 -2.196851083 -0.211357606 -2.368461491 -1.839348559 </span>
-<span class="co">#&gt;           43           44           45           46           47           48 </span>
-<span class="co">#&gt; -1.904430025 -2.091703518 -2.654253578  0.846211423 -2.991437116 -2.021449017 </span>
-<span class="co">#&gt;           49           50           51           52           53           54 </span>
-<span class="co">#&gt; -1.933260989 -2.886045355 -0.908751177  0.662002415 -3.205449737  3.205637595 </span>
-<span class="co">#&gt;           55           56           57           58           59           60 </span>
-<span class="co">#&gt;  0.735013472 -1.899893646  3.613740384 -1.408324798  0.526016993 -2.233483543 </span>
-<span class="co">#&gt;           61           62           63           64           65           66 </span>
-<span class="co">#&gt; -3.826291617 -4.753672801 -2.187779756  1.285822532 -3.411778337 -2.578444209 </span>
-<span class="co">#&gt;           67           68           69           70           71           72 </span>
-<span class="co">#&gt; -2.461086691 -0.777479159 -2.312301667 -1.382727762 -2.801749140 -5.343263568 </span>
-<span class="co">#&gt;           73           74           75           76           77           78 </span>
-<span class="co">#&gt;  1.141818945 -0.526982366 -2.417978175 -1.994810588 -4.818416380  0.034722918 </span>
-<span class="co">#&gt;           79           80           81           82           83           84 </span>
-<span class="co">#&gt; -0.832859347 -4.530753184 -2.180788652 -3.318933147 -2.413842915 -0.280419885 </span>
-<span class="co">#&gt;           85           86           87           88           89           90 </span>
-<span class="co">#&gt; -1.447046877 -1.492977434  0.303612280 -0.886184730 -4.809603380 -2.115687745 </span>
-<span class="co">#&gt;           91           92           93           94           95           96 </span>
-<span class="co">#&gt; -2.818186185  0.891722666  0.959800532 -0.830959301 -3.534863212 -3.556336636 </span>
-<span class="co">#&gt;           97           98           99          100 </span>
-<span class="co">#&gt; -1.439087277 -1.277347170 -2.751170580  0.170612665</span>
-<span class="fu">Residuals</span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
-<span class="co">#&gt;            1            2            3            4            5            6 </span>
-<span class="co">#&gt; -1.120080236  0.279645245 -0.881122755 -1.293567215 -0.005909561 -0.217752121 </span>
-<span class="co">#&gt;            7            8            9           10           11           12 </span>
-<span class="co">#&gt; -0.817988823  0.404622201  1.862632662  0.163736834 -0.685532164  0.328317965 </span>
-<span class="co">#&gt;           13           14           15           16           17           18 </span>
-<span class="co">#&gt; -0.516684946  0.091594867 -0.417321259 -0.083369583 -0.840139542  0.147083793 </span>
-<span class="co">#&gt;           19           20           21           22           23           24 </span>
-<span class="co">#&gt;  0.214004894  0.572472719  0.576847978  0.615275379 -0.249936264  0.046743524 </span>
-<span class="co">#&gt;           25           26           27           28           29           30 </span>
-<span class="co">#&gt;  0.406195559 -0.716220862  1.904791995 -0.582270314  0.772813505  0.232909885 </span>
-<span class="co">#&gt;           31           32           33           34           35           36 </span>
-<span class="co">#&gt;  1.977598091 -0.994852987 -0.442336371 -0.174947829 -1.274211291  0.388408185 </span>
-<span class="co">#&gt;           37           38           39           40           41           42 </span>
-<span class="co">#&gt;  1.198722904  0.353780760  0.862773801  0.174453934  0.562214442  0.563212087 </span>
-<span class="co">#&gt;           43           44           45           46           47           48 </span>
-<span class="co">#&gt;  1.664202308 -0.172067840  1.203606343  0.786739388  0.925387734  0.475067358 </span>
-<span class="co">#&gt;           49           50           51           52           53           54 </span>
-<span class="co">#&gt; -0.161610957  1.174797091 -1.439025593  0.111910211 -0.461144948 -0.193211838 </span>
-<span class="co">#&gt;           55           56           57           58           59           60 </span>
-<span class="co">#&gt; -1.824174616  1.460743023 -0.393007087 -0.050819316  0.311574094  0.283169595 </span>
-<span class="co">#&gt;           61           62           63           64           65           66 </span>
-<span class="co">#&gt; -1.526987021  0.113549271 -0.298381399  0.444642561  1.893012537  0.019518315 </span>
-<span class="co">#&gt;           67           68           69           70           71           72 </span>
-<span class="co">#&gt; -1.757722871 -0.241990580  0.327179004 -1.212376110  0.012503589 -0.575934625 </span>
-<span class="co">#&gt;           73           74           75           76           77           78 </span>
-<span class="co">#&gt;  1.444134498 -0.120958565 -1.444865724  0.967276519 -0.383802351 -0.770509409 </span>
-<span class="co">#&gt;           79           80           81           82           83           84 </span>
-<span class="co">#&gt; -1.372390841 -0.333300218 -1.384507516  0.929036603 -1.059549719 -1.344936117 </span>
-<span class="co">#&gt;           85           86           87           88           89           90 </span>
-<span class="co">#&gt; -0.330073044 -0.012916662 -0.190506606 -0.294179215 -1.911132964  1.553446174 </span>
-<span class="co">#&gt;           91           92           93           94           95           96 </span>
-<span class="co">#&gt; -0.206314105  0.793645900 -0.564629787  0.590086964  2.259552973  1.299186046 </span>
-<span class="co">#&gt;           97           98           99          100 </span>
-<span class="co">#&gt; -0.358817763  0.006445669 -0.800876980 -1.244300464</span></code></pre></div>
+<span class="co">#&gt; (Intercept)         X.1         X.2         X.3         X.4         X.5 </span>
+<span class="co">#&gt;  -2.2022943   0.8959225  -1.0580583   1.0379296  -1.0645601   0.9041809 </span>
+<span class="co">#&gt;         X.6 </span>
+<span class="co">#&gt;  -0.8213827</span>
+<span class="fu"><a href="../reference/summary.html">Fitted.values</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
+<span class="co">#&gt;          1          2          3          4          5 </span>
+<span class="co">#&gt; -2.1420667 -2.1622085 -0.2436451 -2.2088320 -2.9842630</span>
+<span class="fu"><a href="../reference/summary.html">Residuals</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
+<span class="co">#&gt;           1           2           3           4           5 </span>
+<span class="co">#&gt; -0.09655756  1.47289435  1.06380419  0.59141808  0.14205686</span></code></pre></div>
 <p>Check the significant variables by bootstratp.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
 <span class="co">#&gt; ===================Start bootstrapping================</span>
-<span class="co">#&gt; [1] "==============running process: 10% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 20% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 30% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 40% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 50% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 60% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 70% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 80% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 90% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 100% ============="</span>
 <span class="co">#&gt; ===================Finish bootstrapping================</span>
 <span class="va">s1</span>
-<span class="co">#&gt;             Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
-<span class="co">#&gt; intercept -1.9724071  0.1000178 -19.720562 0.000000e+00</span>
-<span class="co">#&gt; X.1        0.8963815  0.1173190   7.640548 2.153833e-14</span>
-<span class="co">#&gt; X.2       -0.8172811  0.1468166  -5.566680 2.596389e-08</span>
-<span class="co">#&gt; X.3        1.0873532  0.1457880   7.458452 8.748557e-14</span>
-<span class="co">#&gt; X.4       -1.2046588  0.1107230 -10.879931 0.000000e+00</span>
-<span class="co">#&gt; X.5        1.0863035  0.1288517   8.430649 0.000000e+00</span>
-<span class="co">#&gt; X.6       -1.2066205  0.1082484 -11.146777 0.000000e+00</span></code></pre></div>
+<span class="co">#&gt;               Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept) -2.2022943  0.1081212 -20.368763 0.000000e+00</span>
+<span class="co">#&gt; X.1          0.8959225  0.1267324   7.069404 1.556089e-12</span>
+<span class="co">#&gt; X.2         -1.0580583  0.1303466  -8.117270 4.440892e-16</span>
+<span class="co">#&gt; X.3          1.0379296  0.1584818   6.549203 5.784506e-11</span>
+<span class="co">#&gt; X.4         -1.0645601  0.1311864  -8.114868 4.440892e-16</span>
+<span class="co">#&gt; X.5          0.9041809  0.1720390   5.255675 1.474825e-07</span>
+<span class="co">#&gt; X.6         -0.8213827  0.1411326  -5.819935 5.887039e-09</span></code></pre></div>
 </div>
-<div id="handle-data-with-missing-values" class="section level3">
-<h3 class="hasAnchor">
-<a href="#handle-data-with-missing-values" class="anchor"></a>Handle data with missing values</h3>
+<div id="handle-data-with-missing-values" class="section level2">
+<h2 class="hasAnchor">
+<a href="#handle-data-with-missing-values" class="anchor"></a>Handle data with missing values</h2>
 <p>First, we randomly remove some entries in X.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mis_rate</span> <span class="op">&lt;-</span> <span class="fl">0.3</span>
@@ -291,370 +215,388 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Residuals:</span>
 <span class="co">#&gt;       50       57       63       66       68       72       79       81 </span>
-<span class="co">#&gt;  0.56091 -0.03238  0.53089  0.46470 -0.70006 -0.79444  0.07821 -0.73569 </span>
+<span class="co">#&gt; -0.17743 -0.27005 -0.38191  0.10914  0.09136  0.07687  0.39794 -0.09317 </span>
 <span class="co">#&gt;       96 </span>
-<span class="co">#&gt;  0.62787 </span>
+<span class="co">#&gt;  0.24726 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span>
-<span class="co">#&gt; (Intercept)  -1.9702     0.9961  -1.978    0.187</span>
-<span class="co">#&gt; Xmis1         0.4295     1.2206   0.352    0.759</span>
-<span class="co">#&gt; Xmis2        -1.0268     2.4223  -0.424    0.713</span>
-<span class="co">#&gt; Xmis3         1.3579     1.1141   1.219    0.347</span>
-<span class="co">#&gt; Xmis4        -1.2781     0.7925  -1.613    0.248</span>
-<span class="co">#&gt; Xmis5         0.3800     1.5139   0.251    0.825</span>
-<span class="co">#&gt; Xmis6        -1.2203     1.1855  -1.029    0.412</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)  </span>
+<span class="co">#&gt; (Intercept) -1.56828    0.23697  -6.618   0.0221 *</span>
+<span class="co">#&gt; Xmis1        1.70397    0.39504   4.313   0.0498 *</span>
+<span class="co">#&gt; Xmis2       -0.89937    0.30019  -2.996   0.0957 .</span>
+<span class="co">#&gt; Xmis3        0.34498    0.50997   0.676   0.5685  </span>
+<span class="co">#&gt; Xmis4        0.07982    0.49712   0.161   0.8872  </span>
+<span class="co">#&gt; Xmis5        1.23740    0.23485   5.269   0.0342 *</span>
+<span class="co">#&gt; Xmis6       -0.01652    0.44224  -0.037   0.9736  </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 1.199 on 2 degrees of freedom</span>
+<span class="co">#&gt; Residual standard error: 0.5023 on 2 degrees of freedom</span>
 <span class="co">#&gt;   (91 observations deleted due to missingness)</span>
-<span class="co">#&gt; Multiple R-squared:  0.9385, Adjusted R-squared:  0.7539 </span>
-<span class="co">#&gt; F-statistic: 5.083 on 6 and 2 DF,  p-value: 0.1735</span></code></pre></div>
-<p>Third, we use <em>ILSE</em> to fit the linear regression model based on all data.</p>
+<span class="co">#&gt; Multiple R-squared:  0.9839, Adjusted R-squared:  0.9357 </span>
+<span class="co">#&gt; F-statistic: 20.39 on 6 and 2 DF,  p-value: 0.04748</span></code></pre></div>
+<p>Third, we use <em>ILSE</em> to fit the linear regression model based on all data. We can fit a linear regression model without intercept by setting formula:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span>, data<span class="op">=</span><span class="cn">NULL</span>, infor_output<span class="op">=</span><span class="cn">T</span><span class="op">)</span>
-<span class="co">#&gt; iter:0d.fn:NAd.par:NA</span>
-<span class="co">#&gt; par:-1.970.43-1.031.36-1.280.38-1.22</span>
-<span class="co">#&gt; iter:1d.fn:0.104897962126958d.par:0.236193971235587</span>
-<span class="co">#&gt; coefs:-1.630.81-0.60.89-0.930.35-1.14</span>
-<span class="co">#&gt; iter:2d.fn:9.15712255961691e-05d.par:0.0347770463584336</span>
-<span class="co">#&gt; coefs:-1.640.78-0.540.84-0.910.35-1.19</span>
-<span class="co">#&gt; iter:3d.fn:0.000191688620118891d.par:0.00431484194314171</span>
-<span class="co">#&gt; coefs:-1.650.78-0.540.83-0.910.35-1.19</span>
-<span class="co">#&gt; iter:4d.fn:1.60836638105554e-06d.par:0.000264396781894253</span>
-<span class="co">#&gt; coefs:-1.650.78-0.540.83-0.910.35-1.19</span>
-<span class="co">#&gt; iter:5d.fn:1.95910806143854e-06d.par:3.89823884700356e-05</span>
-<span class="co">#&gt; coefs:-1.650.78-0.540.83-0.910.35-1.19</span>
-<span class="co">#&gt; iter:6d.fn:3.0025095220502e-07d.par:4.66612033027583e-06</span>
-<span class="co">#&gt; coefs:-1.650.78-0.540.83-0.910.35-1.19</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">+</span><span class="fl">0</span>, data<span class="op">=</span><span class="cn">NULL</span>, verbose<span class="op">=</span><span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.308620 </span>
+<span class="co">#&gt; iter=3, d_fn=0.000352, d_par = 0.044962 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000110, d_par = 0.012572 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000031, d_par = 0.002769 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000007, d_par = 0.000561 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000001, d_par = 0.000113 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000000, d_par = 0.000023 </span>
+<span class="co">#&gt; iter=9, d_fn=0.000000, d_par = 0.000005</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
 <span class="co">#&gt; $beta</span>
-<span class="co">#&gt;  intercept         X1         X2         X3         X4         X5         X6 </span>
-<span class="co">#&gt; -1.6453080  0.7792716 -0.5383929  0.8287778 -0.9064403  0.3528486 -1.1913363 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Bmat</span>
-<span class="co">#&gt;            [,1]      [,2]       [,3]      [,4]       [,5]      [,6]      [,7]</span>
-<span class="co">#&gt; iter0 -1.970238 0.4295143 -1.0267722 1.3579081 -1.2781154 0.3799882 -1.220275</span>
-<span class="co">#&gt; iter1 -1.628854 0.8109200 -0.5992968 0.8925497 -0.9293833 0.3535375 -1.141259</span>
-<span class="co">#&gt; iter2 -1.644628 0.7846078 -0.5449896 0.8359030 -0.9067847 0.3509834 -1.194863</span>
-<span class="co">#&gt; iter3 -1.645167 0.7793540 -0.5383118 0.8288067 -0.9060949 0.3523418 -1.191467</span>
-<span class="co">#&gt; iter4 -1.645304 0.7792514 -0.5383374 0.8287348 -0.9064084 0.3527767 -1.191322</span>
-<span class="co">#&gt; iter5 -1.645309 0.7792690 -0.5383863 0.8287727 -0.9064384 0.3528409 -1.191334</span>
-<span class="co">#&gt; iter6 -1.645308 0.7792716 -0.5383929 0.8287778 -0.9064403 0.3528486 -1.191336</span>
+<span class="co">#&gt;       Xmis1       Xmis2       Xmis3       Xmis4       Xmis5       Xmis6 </span>
+<span class="co">#&gt;  0.58596479 -0.74059817  1.06687893 -0.36906159  0.19980700 -0.03735775 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.fn</span>
-<span class="co">#&gt; [1] 3.00251e-07</span>
+<span class="co">#&gt; [1] 4.884727e-08</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.par</span>
-<span class="co">#&gt; [1] 4.66612e-06</span>
+<span class="co">#&gt; [1] 4.528696e-06</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 6</span></code></pre></div>
-<p>Fourth, <em>Bootstrap</em> is applied to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe four significant coefficients.</p>
+<span class="co">#&gt; [1] 9</span></code></pre></div>
+<p>Then, we fit a linear regression model with intercept by following command</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse2</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span>, data<span class="op">=</span><span class="cn">NULL</span>, verbose<span class="op">=</span><span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.308905 </span>
+<span class="co">#&gt; iter=3, d_fn=0.001970, d_par = 0.045567 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000397, d_par = 0.009050 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000088, d_par = 0.002126 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000020, d_par = 0.000517 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000005, d_par = 0.000125 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000001, d_par = 0.000029 </span>
+<span class="co">#&gt; iter=9, d_fn=0.000000, d_par = 0.000007</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
+<span class="co">#&gt; $beta</span>
+<span class="co">#&gt; (Intercept)       Xmis1       Xmis2       Xmis3       Xmis4       Xmis5 </span>
+<span class="co">#&gt;  -2.4162300   0.8441851  -1.1313148   0.7766423  -0.7653005   0.7912872 </span>
+<span class="co">#&gt;       Xmis6 </span>
+<span class="co">#&gt;  -0.9474621 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $d.fn</span>
+<span class="co">#&gt; [1] 2.243866e-07</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $d.par</span>
+<span class="co">#&gt; [1] 6.642455e-06</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $iterations</span>
+<span class="co">#&gt; [1] 9</span></code></pre></div>
+<p>Fourth, <em>Bootstrap</em> is applied to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe four significant coefficients.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse2</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; ===================Start bootstrapping================</span>
-<span class="co">#&gt; [1] "==============running process: 10% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 20% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 30% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 40% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 50% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 60% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 70% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 80% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 90% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 100% ============="</span>
 <span class="co">#&gt; ===================Finish bootstrapping================</span>
 <span class="va">s2</span>
-<span class="co">#&gt;             Estimate std. Error   Z value     Pr(&gt;|Z|)</span>
-<span class="co">#&gt; intercept -1.6453080  0.1823854 -9.021049 0.000000e+00</span>
-<span class="co">#&gt; X1         0.7792716  0.2303623  3.382809 7.174851e-04</span>
-<span class="co">#&gt; X2        -0.5383929  0.1932418 -2.786110 5.334484e-03</span>
-<span class="co">#&gt; X3         0.8287778  0.2571963  3.222355 1.271415e-03</span>
-<span class="co">#&gt; X4        -0.9064403  0.2507468 -3.614962 3.003912e-04</span>
-<span class="co">#&gt; X5         0.3528486  0.2002457  1.762078 7.805612e-02</span>
-<span class="co">#&gt; X6        -1.1913363  0.1621764 -7.345927 2.042810e-13</span></code></pre></div>
+<span class="co">#&gt;               Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept) -2.4162300  0.2365023 -10.216517 0.000000e+00</span>
+<span class="co">#&gt; Xmis1        0.8441851  0.2097533   4.024657 5.705834e-05</span>
+<span class="co">#&gt; Xmis2       -1.1313148  0.2191038  -5.163374 2.425382e-07</span>
+<span class="co">#&gt; Xmis3        0.7766423  0.3131358   2.480209 1.313052e-02</span>
+<span class="co">#&gt; Xmis4       -0.7653005  0.2574563  -2.972545 2.953418e-03</span>
+<span class="co">#&gt; Xmis5        0.7912872  0.2753075   2.874194 4.050601e-03</span>
+<span class="co">#&gt; Xmis6       -0.9474621  0.2720090  -3.483201 4.954564e-04</span></code></pre></div>
 <p>In <em>ILSE</em> package, we also provide Full Information Maximum Likelihood for Linear Regression <em>fimlreg</em>. We show how to use it to handle the above missing data.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fimllm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fimlreg.html">fimlreg</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">fimllm</span><span class="op">)</span>
-<span class="co">#&gt; $beta</span>
-<span class="co">#&gt;  intercept         X1         X2         X3         X4         X5         X6 </span>
-<span class="co">#&gt; -1.9601651  1.0788227 -0.8895770  1.2461242 -1.4036280  0.9226424 -0.8530146 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 75</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $stop.code</span>
-<span class="co">#&gt; [1] 1</span></code></pre></div>
-<p>We also use <em>bootstrap</em> to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe only one significant coefficients.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s_fiml</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fimllm</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">fimllm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fimlreg.html">fimlreg</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">fimllm</span><span class="op">)</span>
+<span class="co">#&gt; $beta</span>
+<span class="co">#&gt; intercept     Xmis1     Xmis2     Xmis3     Xmis4     Xmis5     Xmis6 </span>
+<span class="co">#&gt; -2.677095  1.323890 -2.372631  1.996090 -1.669343  2.249249 -1.547666 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $formula</span>
+<span class="co">#&gt; Y ~ Xmis</span></code></pre></div>
+<p>We also use <em>bootstrap</em> to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe only one significant coefficients.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">s_fiml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">fimllm</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; ===================Start bootstrapping================</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 10% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 20% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 30% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 40% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 50% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 60% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 70% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 80% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 90% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 100% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
 <span class="co">#&gt; ===================Finish bootstrapping================</span>
 <span class="va">s_fiml</span>
-<span class="co">#&gt;             Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
-<span class="co">#&gt; intercept -1.9601651  1.5726839 -1.2463821 2.126241e-01</span>
-<span class="co">#&gt; X1         1.0788227  2.4930914  0.4327249 6.652146e-01</span>
-<span class="co">#&gt; X2        -0.8895770  2.9711926 -0.2994007 7.646344e-01</span>
-<span class="co">#&gt; X3         1.2461242  2.3634465  0.5272488 5.980209e-01</span>
-<span class="co">#&gt; X4        -1.4036280  0.3336279 -4.2071655 2.585938e-05</span>
-<span class="co">#&gt; X5         0.9226424  0.9623691  0.9587199 3.376999e-01</span>
-<span class="co">#&gt; X6        -0.8530146  1.7912207 -0.4762197 6.339178e-01</span></code></pre></div>
+<span class="co">#&gt;            Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; intercept -2.677095  0.2637704 -10.149337 0.000000e+00</span>
+<span class="co">#&gt; Xmis1      1.323890  0.2698174   4.906613 9.266258e-07</span>
+<span class="co">#&gt; Xmis2     -2.372631  0.4670243  -5.080316 3.768081e-07</span>
+<span class="co">#&gt; Xmis3      1.996090  0.6178430   3.230740 1.234704e-03</span>
+<span class="co">#&gt; Xmis4     -1.669343  0.5038814  -3.312969 9.231123e-04</span>
+<span class="co">#&gt; Xmis5      2.249249  0.6264812   3.590289 3.303112e-04</span>
+<span class="co">#&gt; Xmis6     -1.547666  0.4104885  -3.770302 1.630500e-04</span></code></pre></div>
 </div>
-<div id="visualization" class="section level3">
-<h3 class="hasAnchor">
-<a href="#visualization" class="anchor"></a>Visualization</h3>
+<div id="visualization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#visualization" class="anchor"></a>Visualization</h2>
 <p>We visualize the p-vaules of each methods , where red line denotes 0.05 in y-axis and blue line 0.1 in y-axis.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>CC<span class="op">=</span><span class="va">s_cc</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, ILSE<span class="op">=</span><span class="va">s2</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, FIML<span class="op">=</span><span class="va">s_fiml</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Pval<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">pMat</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>,
                     Method <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CC'</span>, <span class="st">"ILSE"</span>, <span class="st">"FIML"</span><span class="op">)</span>,each<span class="op">=</span><span class="va">p</span><span class="op">)</span><span class="op">)</span>,
                     covariate<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="fl">1</span><span class="op">:</span><span class="va">p</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">covariate</span>, y<span class="op">=</span><span class="va">Pval</span>, fill<span class="op">=</span><span class="va">Method</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, stat<span class="op">=</span><span class="st">"identity"</span>,width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.05</span>, color<span class="op">=</span><span class="st">'red'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></code></pre></div>
-<p><img src="ILSE.Simu_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="ILSE.Simu_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
 </div>
 </div>
-<div id="session-information" class="section level2">
+<div id="ilse-can-handle-missing-data-with-continuos-and-categorical-variables" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ilse-can-handle-missing-data-with-continuos-and-categorical-variables" class="anchor"></a>ILSE can handle missing data with continuos and categorical variables</h1>
+<p>Base on the above data, we add a new column, a categorical variable (Sex), into the data.frame. This variable is not associated with the outcome variable.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Y<span class="op">=</span><span class="va">Y</span>, X<span class="op">=</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="va">dat</span><span class="op">$</span><span class="va">Sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'male'</span>, <span class="st">'female'</span><span class="op">)</span>, times<span class="op">=</span><span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dat</span><span class="op">$</span><span class="va">Sex</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">n</span><span class="op">*</span><span class="va">mis_rate</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+<span class="va">ilse1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">dat</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.314454 </span>
+<span class="co">#&gt; iter=3, d_fn=0.003774, d_par = 0.054618 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000844, d_par = 0.012373 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000241, d_par = 0.004961 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000074, d_par = 0.002231 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000023, d_par = 0.000978 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000007, d_par = 0.000407 </span>
+<span class="co">#&gt; iter=9, d_fn=0.000002, d_par = 0.000161 </span>
+<span class="co">#&gt; iter=10, d_fn=0.000000, d_par = 0.000060 </span>
+<span class="co">#&gt; iter=11, d_fn=0.000000, d_par = 0.000022 </span>
+<span class="co">#&gt; iter=12, d_fn=0.000000, d_par = 0.000008</span></code></pre></div>
+<p>We can change the bootstrap times in calculate the standard errors, Z value and p-values of coefficients.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">s3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse1</span>, Nbt<span class="op">=</span><span class="fl">40</span><span class="op">)</span>
+<span class="co">#&gt; ===================Start bootstrapping================</span>
+<span class="co">#&gt; ===================Finish bootstrapping================</span>
+<span class="va">s3</span>
+<span class="co">#&gt;               Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept) -2.6313598  0.2897297 -9.0821189 0.000000e+00</span>
+<span class="co">#&gt; X.1          0.8201768  0.2214807  3.7031533 2.129362e-04</span>
+<span class="co">#&gt; X.2         -1.1144850  0.2198468 -5.0693710 3.991326e-07</span>
+<span class="co">#&gt; X.3          0.6647766  0.3600971  1.8461037 6.487715e-02</span>
+<span class="co">#&gt; X.4         -0.7696752  0.3517871 -2.1879009 2.867682e-02</span>
+<span class="co">#&gt; X.5          0.7711729  0.2924944  2.6365392 8.375653e-03</span>
+<span class="co">#&gt; X.6         -1.0168773  0.3240620 -3.1379099 1.701572e-03</span>
+<span class="co">#&gt; Sexmale      0.2601348  0.5927345  0.4388723 6.607540e-01</span></code></pre></div>
+</div>
+<div id="ilse-can-correctly-identify-the-important-variables" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ilse-can-correctly-identify-the-important-variables" class="anchor"></a>ILSE can correctly identify the important variables</h1>
+<div id="generate-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#session-information" class="anchor"></a>Session information</h2>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<a href="#generate-data" class="anchor"></a>generate data</h2>
+<p>First, we generate data from a linear regression model with three inportant variables(1,3,5) and three unimportant variables(2,4,6).</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">6</span>
+<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="../reference/cor.mat.html">cor.mat</a></span><span class="op">(</span><span class="va">p</span>, rho<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">beta0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">Y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span><span class="op">+</span> <span class="va">X</span> <span class="op">%*%</span> <span class="va">beta0</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"The true regression coefficients are: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">beta0</span>, <span class="st">'  '</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; The true regression coefficients are: 1  0  1  0  1  0</span></code></pre></div>
+<p>We randomly assign missing values in the design matrix.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mis_rate</span> <span class="op">&lt;-</span> <span class="fl">0.3</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">na_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">)</span>, <span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">*</span><span class="va">mis_rate</span><span class="op">)</span>
+<span class="va">Xmis</span> <span class="op">&lt;-</span> <span class="va">X</span>
+<span class="va">Xmis</span><span class="op">[</span><span class="va">na_id</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></code></pre></div>
+<p>Next, we use ILSE to fit model.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Y<span class="op">=</span><span class="va">Y</span>, X<span class="op">=</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="va">ilse1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">dat</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.160953 </span>
+<span class="co">#&gt; iter=3, d_fn=0.000558, d_par = 0.013963 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000061, d_par = 0.002379 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000016, d_par = 0.000458 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000003, d_par = 0.000094 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000001, d_par = 0.000019 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000000, d_par = 0.000004</span>
+<span class="va">s3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse1</span><span class="op">)</span>
+<span class="co">#&gt; ===================Start bootstrapping================</span>
+<span class="co">#&gt; ===================Finish bootstrapping================</span>
+<span class="va">s3</span>
+<span class="co">#&gt;                Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept) -2.06112425  0.2299321 -8.9640573 0.000000e+00</span>
+<span class="co">#&gt; X.1          0.83467442  0.1951700  4.2766536 1.897237e-05</span>
+<span class="co">#&gt; X.2          0.12647552  0.1444486  0.8755745 3.812614e-01</span>
+<span class="co">#&gt; X.3          0.75657880  0.1640876  4.6108221 4.010797e-06</span>
+<span class="co">#&gt; X.4          0.03971028  0.1759662  0.2256699 8.214581e-01</span>
+<span class="co">#&gt; X.5          0.99496376  0.1359046  7.3210453 2.460254e-13</span>
+<span class="co">#&gt; X.6          0.15242471  0.1536781  0.9918441 3.212736e-01</span></code></pre></div>
+<p>Fit model by using lm and FIML, finally compare ILSE with these two methods.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="va">s_cc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/summary.lm.html">summary.lm</a></span><span class="op">(</span><span class="va">lm1</span><span class="op">)</span>
+<span class="va">fimllm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fimlreg.html">fimlreg</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="va">s_fiml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">fimllm</span><span class="op">)</span>
+<span class="co">#&gt; ===================Start bootstrapping================</span>
+<span class="co">#&gt; ===================Finish bootstrapping================</span></code></pre></div>
+</div>
+<div id="visualization-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#visualization-1" class="anchor"></a>Visualization</h2>
+<p>We visualize the p-vaules of each methods , where red line denotes 0.05 in y-axis. Under significance level 0.05, we found both ILSE and FIML can identify all important variables (X1, X3 and X5), while CC method only identified X1 and X5.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'ggthemes' was built under R version 4.0.4</span>
+<span class="va">pMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>CC<span class="op">=</span><span class="va">s_cc</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, ILSE<span class="op">=</span><span class="va">s3</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, FIML<span class="op">=</span><span class="va">s_fiml</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span>
+<span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Pval<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">pMat</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>,
+                    Method <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CC'</span>, <span class="st">"ILSE"</span>, <span class="st">"FIML"</span><span class="op">)</span>,each<span class="op">=</span><span class="va">p</span><span class="op">)</span><span class="op">)</span>,
+                    covariate<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="fl">1</span><span class="op">:</span><span class="va">p</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">covariate</span>, y<span class="op">=</span><span class="va">Pval</span>, fill<span class="op">=</span><span class="va">Method</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, stat<span class="op">=</span><span class="st">"identity"</span>,width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.05</span>, color<span class="op">=</span><span class="st">'red'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_economist.html">scale_fill_economist</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="ILSE.Simu_files/figure-html/unnamed-chunk-21-1.png" width="700"></p>
+</div>
+</div>
+<div id="ilse-can-handle-data-with-high-missing-rate" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ilse-can-handle-data-with-high-missing-rate" class="anchor"></a>ILSE can handle data with high missing rate</h1>
+<p>Here, we generate a data with 80% missing values, then use ILSE to fit model.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co"># generate data from linear model</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">6</span>
+<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="../reference/cor.mat.html">cor.mat</a></span><span class="op">(</span><span class="va">p</span>, rho<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">beta0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">Y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span><span class="op">+</span> <span class="va">X</span> <span class="op">%*%</span> <span class="va">beta0</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+
+<span class="co"># generate missing values</span>
+<span class="va">mis_rate</span> <span class="op">&lt;-</span> <span class="fl">0.8</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">na_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">)</span>, <span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">*</span><span class="va">mis_rate</span><span class="op">)</span>
+<span class="va">Xmis</span> <span class="op">&lt;-</span> <span class="va">X</span>
+<span class="va">Xmis</span><span class="op">[</span><span class="va">na_id</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+<span class="co"># retain 4 complete cases.</span>
+<span class="va">Xmis</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="op">]</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases</a></span><span class="op">(</span><span class="va">Xmis</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 4</span></code></pre></div>
+<p>CC method will failed.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/summary.lm.html">summary.lm</a></span><span class="op">(</span><span class="va">lm1</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = Y ~ Xmis)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt; ALL 4 residuals are 0: no residual degrees of freedom!</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients: (3 not defined because of singularities)</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span>
+<span class="co">#&gt; (Intercept)  -40.397         NA      NA       NA</span>
+<span class="co">#&gt; Xmis1          8.865         NA      NA       NA</span>
+<span class="co">#&gt; Xmis2        -63.461         NA      NA       NA</span>
+<span class="co">#&gt; Xmis3         -2.049         NA      NA       NA</span>
+<span class="co">#&gt; Xmis4             NA         NA      NA       NA</span>
+<span class="co">#&gt; Xmis5             NA         NA      NA       NA</span>
+<span class="co">#&gt; Xmis6             NA         NA      NA       NA</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: NaN on 0 degrees of freedom</span>
+<span class="co">#&gt;   (96 observations deleted due to missingness)</span>
+<span class="co">#&gt; Multiple R-squared:      1,  Adjusted R-squared:    NaN </span>
+<span class="co">#&gt; F-statistic:   NaN on 3 and 0 DF,  p-value: NA</span></code></pre></div>
+<p>However, ILSE can still work.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.271275 </span>
+<span class="co">#&gt; iter=3, d_fn=0.001267, d_par = 0.058449 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000385, d_par = 0.020572 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000049, d_par = 0.012448 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000018, d_par = 0.007985 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000013, d_par = 0.005129 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000008, d_par = 0.003294 </span>
+<span class="co">#&gt; iter=9, d_fn=0.000005, d_par = 0.002115 </span>
+<span class="co">#&gt; iter=10, d_fn=0.000003, d_par = 0.001357 </span>
+<span class="co">#&gt; iter=11, d_fn=0.000002, d_par = 0.000870 </span>
+<span class="co">#&gt; iter=12, d_fn=0.000001, d_par = 0.000558 </span>
+<span class="co">#&gt; iter=13, d_fn=0.000001, d_par = 0.000358 </span>
+<span class="co">#&gt; iter=14, d_fn=0.000001, d_par = 0.000229 </span>
+<span class="co">#&gt; iter=15, d_fn=0.000000, d_par = 0.000147 </span>
+<span class="co">#&gt; iter=16, d_fn=0.000000, d_par = 0.000094 </span>
+<span class="co">#&gt; iter=17, d_fn=0.000000, d_par = 0.000060 </span>
+<span class="co">#&gt; iter=18, d_fn=0.000000, d_par = 0.000039</span>
+<span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
+<span class="co">#&gt; ===================Start bootstrapping================</span>
+<span class="co">#&gt; ===================Finish bootstrapping================</span>
+<span class="va">s2</span>
+<span class="co">#&gt;               Estimate std. Error    Z value     Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept) -2.6289947  0.4007115 -6.5608166 5.351386e-11</span>
+<span class="co">#&gt; Xmis1        0.1629590  0.3229931  0.5045277 6.138906e-01</span>
+<span class="co">#&gt; Xmis2       -0.7229765  0.5864368 -1.2328293 2.176395e-01</span>
+<span class="co">#&gt; Xmis3        1.0723690  0.5802388  1.8481510 6.458050e-02</span>
+<span class="co">#&gt; Xmis4       -0.5075846  0.3998173 -1.2695414 2.042480e-01</span>
+<span class="co">#&gt; Xmis5        0.6336328  0.4455270  1.4222097 1.549654e-01</span>
+<span class="co">#&gt; Xmis6       -0.3460781  0.5279156 -0.6555557 5.121101e-01</span></code></pre></div>
+</div>
+<div id="ilse-can-handle-large-scale-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ilse-can-handle-large-scale-data" class="anchor"></a>ILSE can handle large-scale data</h1>
+<p>We generate a large-scale data with n=1000 and p = 50</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">50</span>
+<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="../reference/cor.mat.html">cor.mat</a></span><span class="op">(</span><span class="va">p</span>, rho<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
+<span class="va">beta0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span><span class="op">)</span>, length<span class="op">=</span><span class="va">p</span><span class="op">)</span>
+<span class="va">Y</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">2</span><span class="op">+</span> <span class="va">X</span> <span class="op">%*%</span> <span class="va">beta0</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+
+<span class="va">mis_rate</span> <span class="op">&lt;-</span> <span class="fl">0.3</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">na_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">)</span>, <span class="va">n</span><span class="op">*</span><span class="va">p</span><span class="op">*</span><span class="va">mis_rate</span><span class="op">)</span>
+<span class="va">Xmis</span> <span class="op">&lt;-</span> <span class="va">X</span>
+<span class="va">Xmis</span><span class="op">[</span><span class="va">na_id</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+
+
+<span class="va">Xmis</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="op">]</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="op">]</span>
+<span class="va">lm1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span><span class="op">)</span>
+<span class="va">lm1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = Y ~ Xmis)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt; (Intercept)        Xmis1        Xmis2        Xmis3        Xmis4        Xmis5  </span>
+<span class="co">#&gt;     -3.5365       5.8279      -4.1408      -0.6490       0.4946       2.4875  </span>
+<span class="co">#&gt;       Xmis6        Xmis7        Xmis8        Xmis9       Xmis10       Xmis11  </span>
+<span class="co">#&gt;     -2.1856       4.1492       3.3353      -4.1414           NA           NA  </span>
+<span class="co">#&gt;      Xmis12       Xmis13       Xmis14       Xmis15       Xmis16       Xmis17  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis18       Xmis19       Xmis20       Xmis21       Xmis22       Xmis23  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis24       Xmis25       Xmis26       Xmis27       Xmis28       Xmis29  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis30       Xmis31       Xmis32       Xmis33       Xmis34       Xmis35  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis36       Xmis37       Xmis38       Xmis39       Xmis40       Xmis41  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis42       Xmis43       Xmis44       Xmis45       Xmis46       Xmis47  </span>
+<span class="co">#&gt;          NA           NA           NA           NA           NA           NA  </span>
+<span class="co">#&gt;      Xmis48       Xmis49       Xmis50  </span>
+<span class="co">#&gt;          NA           NA           NA</span>
+<span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">Xmis</span>, data<span class="op">=</span><span class="cn">NULL</span>, verbose<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.738244 </span>
+<span class="co">#&gt; iter=3, d_fn=0.010435, d_par = 0.273583 </span>
+<span class="co">#&gt; iter=4, d_fn=0.003554, d_par = 0.094381 </span>
+<span class="co">#&gt; iter=5, d_fn=0.001532, d_par = 0.043520 </span>
+<span class="co">#&gt; iter=6, d_fn=0.000502, d_par = 0.021186 </span>
+<span class="co">#&gt; iter=7, d_fn=0.000182, d_par = 0.012532 </span>
+<span class="co">#&gt; iter=8, d_fn=0.000066, d_par = 0.009388 </span>
+<span class="co">#&gt; iter=9, d_fn=0.000001, d_par = 0.007465 </span>
+<span class="co">#&gt; iter=10, d_fn=0.000028, d_par = 0.005977 </span>
+<span class="co">#&gt; iter=11, d_fn=0.000032, d_par = 0.004584 </span>
+<span class="co">#&gt; iter=12, d_fn=0.000030, d_par = 0.003399 </span>
+<span class="co">#&gt; iter=13, d_fn=0.000025, d_par = 0.002459 </span>
+<span class="co">#&gt; iter=14, d_fn=0.000020, d_par = 0.001736 </span>
+<span class="co">#&gt; iter=15, d_fn=0.000015, d_par = 0.001201 </span>
+<span class="co">#&gt; iter=16, d_fn=0.000011, d_par = 0.000817 </span>
+<span class="co">#&gt; iter=17, d_fn=0.000008, d_par = 0.000549 </span>
+<span class="co">#&gt; iter=18, d_fn=0.000006, d_par = 0.000364 </span>
+<span class="co">#&gt; iter=19, d_fn=0.000004, d_par = 0.000240 </span>
+<span class="co">#&gt; iter=20, d_fn=0.000003, d_par = 0.000157</span>
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   27.46    0.03   27.64</span></code></pre></div>
+</div>
+<div id="session-information" class="section level1">
+<h1 class="hasAnchor">
+<a href="#session-information" class="anchor"></a>Session information</h1>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; R version 4.0.3 (2020-10-10)</span>
 <span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span>
@@ -673,23 +615,24 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] ggplot2_3.3.5   ILSE_1.1.6      MASS_7.3-53.1   mvnmle_0.1-11.1</span>
+<span class="co">#&gt; [1] ggthemes_4.2.4 ggplot2_3.3.5  ILSE_1.1.6    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] highr_0.9         bslib_0.3.1       compiler_4.0.3    pillar_1.6.4     </span>
-<span class="co">#&gt;  [5] jquerylib_0.1.4   tools_4.0.3       digest_0.6.28     jsonlite_1.7.2   </span>
-<span class="co">#&gt;  [9] evaluate_0.14     memoise_2.0.0     lifecycle_1.0.1   tibble_3.1.5     </span>
-<span class="co">#&gt; [13] gtable_0.3.0      pkgconfig_2.0.3   rlang_0.4.11      DBI_1.1.1        </span>
-<span class="co">#&gt; [17] yaml_2.2.1        pkgdown_1.6.1     xfun_0.28         fastmap_1.1.0    </span>
-<span class="co">#&gt; [21] withr_2.4.3       dplyr_1.0.7       stringr_1.4.0     knitr_1.36       </span>
-<span class="co">#&gt; [25] generics_0.1.1    vctrs_0.3.8       desc_1.3.0        fs_1.5.2         </span>
-<span class="co">#&gt; [29] sass_0.4.0        systemfonts_1.0.2 tidyselect_1.1.1  rprojroot_2.0.2  </span>
-<span class="co">#&gt; [33] grid_4.0.3        glue_1.4.2        R6_2.5.1          textshaping_0.3.5</span>
-<span class="co">#&gt; [37] fansi_0.5.0       rmarkdown_2.7     farver_2.1.0      purrr_0.3.4      </span>
-<span class="co">#&gt; [41] magrittr_2.0.1    scales_1.1.1      htmltools_0.5.2   ellipsis_0.3.2   </span>
-<span class="co">#&gt; [45] assertthat_0.2.1  colorspace_2.0-2  labeling_0.4.2    ragg_1.1.3       </span>
-<span class="co">#&gt; [49] utf8_1.2.2        stringi_1.7.5     munsell_0.5.0     cachem_1.0.6     </span>
-<span class="co">#&gt; [53] crayon_1.4.2</span></code></pre></div>
+<span class="co">#&gt;  [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      </span>
+<span class="co">#&gt;  [5] pbapply_1.5-0     colorspace_2.0-2  vctrs_0.3.8       generics_0.1.1   </span>
+<span class="co">#&gt;  [9] htmltools_0.5.2   yaml_2.2.2        utf8_1.2.2        rlang_0.4.11     </span>
+<span class="co">#&gt; [13] pkgdown_1.6.1     jquerylib_0.1.4   pillar_1.6.5      glue_1.4.2       </span>
+<span class="co">#&gt; [17] withr_2.4.3       DBI_1.1.2         lifecycle_1.0.1   stringr_1.4.0    </span>
+<span class="co">#&gt; [21] munsell_0.5.0     gtable_0.3.0      ragg_1.1.3        memoise_2.0.0    </span>
+<span class="co">#&gt; [25] evaluate_0.14     labeling_0.4.2    knitr_1.37        fastmap_1.1.0    </span>
+<span class="co">#&gt; [29] parallel_4.0.3    fansi_0.5.0       highr_0.9         Rcpp_1.0.7       </span>
+<span class="co">#&gt; [33] scales_1.1.1      cachem_1.0.6      desc_1.3.0        jsonlite_1.7.2   </span>
+<span class="co">#&gt; [37] farver_2.1.0      systemfonts_1.0.3 fs_1.5.2          textshaping_0.3.5</span>
+<span class="co">#&gt; [41] digest_0.6.28     stringi_1.7.5     dplyr_1.0.7       grid_4.0.3       </span>
+<span class="co">#&gt; [45] rprojroot_2.0.2   tools_4.0.3       magrittr_2.0.1    sass_0.4.0       </span>
+<span class="co">#&gt; [49] tibble_3.1.5      crayon_1.4.2      pkgconfig_2.0.3   MASS_7.3-53.1    </span>
+<span class="co">#&gt; [53] ellipsis_0.3.2    assertthat_0.2.1  rmarkdown_2.11    R6_2.5.1         </span>
+<span class="co">#&gt; [57] compiler_4.0.3</span></code></pre></div>
 </div>
   </div>
 

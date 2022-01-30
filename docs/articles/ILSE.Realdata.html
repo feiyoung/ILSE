@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILSE: A Simple NHANES example • ILSE</title>
+<title>ILSE: a simple NHANES example • ILSE</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="ILSE: A Simple NHANES example">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ILSE: a simple NHANES example">
 <meta property="og:description" content="ILSE">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -57,15 +57,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ILSE.Realdata.html">ILSE: A Simple NHANES example</a>
+      <a href="../articles/ILSE.Realdata.html">ILSE: a simple NHANES example</a>
     </li>
     <li>
-      <a href="../articles/ILSE.Simu.html">ILSE: installation and simulated example</a>
+      <a href="../articles/ILSE.Simu.html">ILSE: simulated examples</a>
     </li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/feiyoung/ILSE/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,12 +85,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>ILSE: A Simple NHANES example</h1>
+      <h1 data-toc-skip>ILSE: a simple NHANES example</h1>
                         <h4 class="author">Wei Liu</h4>
             
-            <h4 class="date">2021-12-26</h4>
+            <h4 class="date">2022-01-30</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/feiyoung/ILSE/blob/master/vignettes/ILSE.Realdata.Rmd"><code>vignettes/ILSE.Realdata.Rmd</code></a></small>
       <div class="hidden name"><code>ILSE.Realdata.Rmd</code></div>
 
     </div>
@@ -95,18 +102,17 @@
 <a href="#load-real-data" class="anchor"></a>Load real data</h3>
 <p>First, we load the ‘ILSE’ package and the real data which can be loaded by following command.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"ILSE"</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: mvnmle</span>
-<span class="co">#&gt; Loading required package: MASS</span>
-<span class="co">#&gt; Warning: package 'MASS' was built under R version 4.0.4</span>
-<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values embedding the</span>
-<span class="co">#&gt; correlation imformation bettwen covariates. Especially for block missing data,</span>
-<span class="co">#&gt; it works well. ILSE conduct imputation and regression simultaneouly and iteratively.</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/feiyoung/ILSE">"ILSE"</a></span><span class="op">)</span>
+<span class="co">#&gt; ILSE :  Linear regression when covariates include missing values by embedding the</span>
+<span class="co">#&gt; correlation information between covariates. Especially for block missing data,</span>
+<span class="co">#&gt; it works well. 'ILSE' conducts imputation and regression simultaneously and iteratively.</span>
+<span class="co">#&gt; More details can be referred to</span>
+<span class="co">#&gt; Huazhen Lin, Wei Liu and Wei Lan. (2021) &lt;doi:10.1080/07350015.2019.1635486&gt;.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'ILSE'</span>
-<span class="co">#&gt; The following object is masked from 'package:base':</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     summary</span>
+<span class="co">#&gt;     print, summary</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"nhanes"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="fit-linear-regression-model" class="section level3">
@@ -117,61 +123,36 @@
 <code class="sourceCode R"><span class="va">ncomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases</a></span><span class="op">(</span><span class="va">nhanes</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Number of complete cases is "</span>, <span class="va">ncomp</span>, <span class="st">'\n'</span><span class="op">)</span>
 <span class="co">#&gt; Number of complete cases is 13</span>
-<span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">age</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">nhanes</span>, infor_output<span class="op">=</span><span class="cn">T</span><span class="op">)</span>
-<span class="co">#&gt; iter:0d.fn:NAd.par:NA</span>
-<span class="co">#&gt; par:1.77-0.10.410.01</span>
-<span class="co">#&gt; iter:1d.fn:0.00126560152830734d.par:0.15880028205645</span>
-<span class="co">#&gt; coefs:2.06-0.120.620.01</span>
-<span class="co">#&gt; iter:2d.fn:0.00199258051575384d.par:0.0021961682120811</span>
-<span class="co">#&gt; coefs:2.05-0.110.620.01</span>
-<span class="co">#&gt; iter:3d.fn:2.59960719394635e-05d.par:2.93416371310591e-05</span>
-<span class="co">#&gt; coefs:2.05-0.110.620.01</span>
-<span class="co">#&gt; iter:4d.fn:2.43882663752311e-07d.par:5.28552627467588e-07</span>
-<span class="co">#&gt; coefs:2.05-0.110.620.01</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
+<span class="va">ilse2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ilse.html">ilse</a></span><span class="op">(</span><span class="va">age</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">nhanes</span>, verbose<span class="op">=</span><span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt; iter=2, d_fn=1.000000, d_par = 0.362223 </span>
+<span class="co">#&gt; iter=3, d_fn=0.001542, d_par = 0.001063 </span>
+<span class="co">#&gt; iter=4, d_fn=0.000009, d_par = 0.000021 </span>
+<span class="co">#&gt; iter=5, d_fn=0.000000, d_par = 0.000000</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">ilse2</span><span class="op">)</span>
 <span class="co">#&gt; $beta</span>
-<span class="co">#&gt;   intercept         bmi         hyp         chl </span>
-<span class="co">#&gt;  2.05238809 -0.11489655  0.61513651  0.01047711 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Bmat</span>
-<span class="co">#&gt;           [,1]       [,2]      [,3]       [,4]</span>
-<span class="co">#&gt; iter0 1.773958 -0.1040127 0.4108214 0.01129992</span>
-<span class="co">#&gt; iter1 2.055663 -0.1153691 0.6195920 0.01049317</span>
-<span class="co">#&gt; iter2 2.052357 -0.1148905 0.6150774 0.01047685</span>
-<span class="co">#&gt; iter3 2.052388 -0.1148966 0.6151376 0.01047711</span>
-<span class="co">#&gt; iter4 2.052388 -0.1148965 0.6151365 0.01047711</span>
+<span class="co">#&gt; (Intercept)         bmi         hyp         chl </span>
+<span class="co">#&gt;  2.06942664 -0.11656313  0.62109971  0.01056364 </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.fn</span>
-<span class="co">#&gt; [1] 2.438827e-07</span>
+<span class="co">#&gt; [1] 6.654795e-08</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $d.par</span>
-<span class="co">#&gt; [1] 5.285526e-07</span>
+<span class="co">#&gt; [1] 1.096466e-07</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 4</span></code></pre></div>
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <p>Next, <em>Bootstrap</em> is applied to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe four significant coefficients.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse2</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">ilse2</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; ===================Start bootstrapping================</span>
-<span class="co">#&gt; [1] "==============running process: 10% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 20% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 30% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 40% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 50% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 60% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 70% ============="</span>
-<span class="co">#&gt; Warning in ilse.numeric(Y, X, bw = bw, intercept = intercept, k.type = k.type, :</span>
-<span class="co">#&gt; algorithm may not converge!</span>
-<span class="co">#&gt; [1] "==============running process: 80% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 90% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 100% ============="</span>
 <span class="co">#&gt; ===================Finish bootstrapping================</span>
 <span class="va">s2</span>
-<span class="co">#&gt;              Estimate  std. Error   Z value    Pr(&gt;|Z|)</span>
-<span class="co">#&gt; intercept  2.05238809 1.209679420  1.696638 0.089765119</span>
-<span class="co">#&gt; bmi       -0.11489655 0.038521572 -2.982655 0.002857602</span>
-<span class="co">#&gt; hyp        0.61513651 0.526723039  1.167856 0.242864968</span>
-<span class="co">#&gt; chl        0.01047711 0.004588216  2.283483 0.022401954</span></code></pre></div>
+<span class="co">#&gt;                Estimate  std. Error   Z value    Pr(&gt;|Z|)</span>
+<span class="co">#&gt; (Intercept)  2.06942664 1.271889901  1.627049 0.103726783</span>
+<span class="co">#&gt; bmi         -0.11656313 0.040544745 -2.874926 0.004041226</span>
+<span class="co">#&gt; hyp          0.62109971 0.490373409  1.266585 0.205303638</span>
+<span class="co">#&gt; chl          0.01056364 0.004746863  2.225395 0.026054745</span></code></pre></div>
 </div>
 <div id="compare-with-cc-and-fiml" class="section level3">
 <h3 class="hasAnchor">
@@ -205,77 +186,39 @@
 <p>We fit linear regression model using FIML method.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fimllm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fimlreg.html">fimlreg</a></span><span class="op">(</span><span class="va">age</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">nhanes</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">fimllm</span><span class="op">)</span>
+<span class="fu"><a href="../reference/print.html">print</a></span><span class="op">(</span><span class="va">fimllm</span><span class="op">)</span>
 <span class="co">#&gt; $beta</span>
 <span class="co">#&gt;   intercept         bmi         hyp         chl </span>
-<span class="co">#&gt;  2.05315271 -0.11996279  0.44480475  0.01204301 </span>
+<span class="co">#&gt;  2.37216291 -0.13518966  0.46886921  0.01253721 </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; $iterations</span>
-<span class="co">#&gt; [1] 65</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $stop.code</span>
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+<span class="co">#&gt; $formula</span>
+<span class="co">#&gt; age ~ .</span></code></pre></div>
 <p>We also use <em>bootstrap</em> to evaluate the standard error and p-values of each coefficients estimated by ILSE. We observe only one significant coefficients.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">s_fiml</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fimllm</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">s_fiml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/summary.html">summary</a></span><span class="op">(</span><span class="va">fimllm</span>, Nbt<span class="op">=</span><span class="fl">20</span><span class="op">)</span>
 <span class="co">#&gt; ===================Start bootstrapping================</span>
-<span class="co">#&gt; [1] "==============running process: 10% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 20% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 30% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 40% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 50% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 60% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 70% ============="</span>
-<span class="co">#&gt; [1] "==============running process: 80% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 90% ============="</span>
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-
-<span class="co">#&gt; Warning in nlm(lf, startvals, ...): NA/Inf replaced by maximum positive value</span>
-<span class="co">#&gt; [1] "==============running process: 100% ============="</span>
 <span class="co">#&gt; ===================Finish bootstrapping================</span>
 <span class="va">s_fiml</span>
-<span class="co">#&gt;              Estimate  std. Error    Z value   Pr(&gt;|Z|)</span>
-<span class="co">#&gt; intercept  2.05315271 1.813486308  1.1321578 0.25756809</span>
-<span class="co">#&gt; bmi       -0.11996279 0.059406742 -2.0193464 0.04345123</span>
-<span class="co">#&gt; hyp        0.44480475 1.294948706  0.3434922 0.73122822</span>
-<span class="co">#&gt; chl        0.01204301 0.009531843  1.2634506 0.20642730</span></code></pre></div>
+<span class="co">#&gt;              Estimate std. Error    Z value  Pr(&gt;|Z|)</span>
+<span class="co">#&gt; intercept  2.37216291 4.29449831  0.5523725 0.5806931</span>
+<span class="co">#&gt; bmi       -0.13518966 0.50231359 -0.2691340 0.7878266</span>
+<span class="co">#&gt; hyp        0.46886921 2.47949527  0.1890987 0.8500155</span>
+<span class="co">#&gt; chl        0.01253721 0.06725012  0.1864265 0.8521103</span></code></pre></div>
 </div>
 <div id="visualization" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualization" class="anchor"></a>Visualization</h3>
 <p>We visualize the p-vaules of each methods, where red line denotes 0.05 in y-axis and blue line 0.1 in y-axis.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>CC<span class="op">=</span><span class="va">s_cc</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, ILSE<span class="op">=</span><span class="va">s2</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, FIML<span class="op">=</span><span class="va">s_fiml</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'ggthemes' was built under R version 4.0.4</span>
+<span class="va">pMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>CC<span class="op">=</span><span class="va">s_cc</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, ILSE<span class="op">=</span><span class="va">s2</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, FIML<span class="op">=</span><span class="va">s_fiml</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span>
 <span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Pval<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">pMat</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>,
                     Method <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CC'</span>, <span class="st">"ILSE"</span>, <span class="st">"FIML"</span><span class="op">)</span>,each<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
                     covariate<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">pMat</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span>, times<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">covariate</span>, y<span class="op">=</span><span class="va">Pval</span>, fill<span class="op">=</span><span class="va">Method</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, stat<span class="op">=</span><span class="st">"identity"</span>,width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.05</span>, color<span class="op">=</span><span class="st">'red'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">covariate</span>, y<span class="op">=</span><span class="va">Pval</span>, fill<span class="op">=</span><span class="va">Method</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, stat<span class="op">=</span><span class="st">"identity"</span>,width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.05</span>, color<span class="op">=</span><span class="st">'red'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/scale_economist.html">scale_fill_economist</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="ILSE.Realdata_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 <div id="session-information" class="section level2">
@@ -300,23 +243,23 @@
 <span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; other attached packages:</span>
-<span class="co">#&gt; [1] ggplot2_3.3.5   ILSE_1.1.6      MASS_7.3-53.1   mvnmle_0.1-11.1</span>
+<span class="co">#&gt; [1] ggthemes_4.2.4 ggplot2_3.3.5  ILSE_1.1.6    </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; loaded via a namespace (and not attached):</span>
-<span class="co">#&gt;  [1] highr_0.9         bslib_0.3.1       compiler_4.0.3    pillar_1.6.4     </span>
-<span class="co">#&gt;  [5] jquerylib_0.1.4   tools_4.0.3       digest_0.6.28     jsonlite_1.7.2   </span>
-<span class="co">#&gt;  [9] evaluate_0.14     memoise_2.0.0     lifecycle_1.0.1   tibble_3.1.5     </span>
-<span class="co">#&gt; [13] gtable_0.3.0      pkgconfig_2.0.3   rlang_0.4.11      DBI_1.1.1        </span>
-<span class="co">#&gt; [17] yaml_2.2.1        pkgdown_1.6.1     xfun_0.28         fastmap_1.1.0    </span>
-<span class="co">#&gt; [21] withr_2.4.3       dplyr_1.0.7       stringr_1.4.0     knitr_1.36       </span>
-<span class="co">#&gt; [25] generics_0.1.1    vctrs_0.3.8       desc_1.3.0        fs_1.5.2         </span>
-<span class="co">#&gt; [29] sass_0.4.0        systemfonts_1.0.2 tidyselect_1.1.1  rprojroot_2.0.2  </span>
-<span class="co">#&gt; [33] grid_4.0.3        glue_1.4.2        R6_2.5.1          textshaping_0.3.5</span>
-<span class="co">#&gt; [37] fansi_0.5.0       rmarkdown_2.7     farver_2.1.0      purrr_0.3.4      </span>
-<span class="co">#&gt; [41] magrittr_2.0.1    scales_1.1.1      htmltools_0.5.2   ellipsis_0.3.2   </span>
-<span class="co">#&gt; [45] assertthat_0.2.1  colorspace_2.0-2  labeling_0.4.2    ragg_1.1.3       </span>
-<span class="co">#&gt; [49] utf8_1.2.2        stringi_1.7.5     munsell_0.5.0     cachem_1.0.6     </span>
-<span class="co">#&gt; [53] crayon_1.4.2</span></code></pre></div>
+<span class="co">#&gt;  [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      </span>
+<span class="co">#&gt;  [5] pbapply_1.5-0     colorspace_2.0-2  vctrs_0.3.8       generics_0.1.1   </span>
+<span class="co">#&gt;  [9] htmltools_0.5.2   yaml_2.2.2        utf8_1.2.2        rlang_0.4.11     </span>
+<span class="co">#&gt; [13] pkgdown_1.6.1     jquerylib_0.1.4   pillar_1.6.5      glue_1.4.2       </span>
+<span class="co">#&gt; [17] withr_2.4.3       DBI_1.1.2         lifecycle_1.0.1   stringr_1.4.0    </span>
+<span class="co">#&gt; [21] munsell_0.5.0     gtable_0.3.0      ragg_1.1.3        memoise_2.0.0    </span>
+<span class="co">#&gt; [25] evaluate_0.14     labeling_0.4.2    knitr_1.37        fastmap_1.1.0    </span>
+<span class="co">#&gt; [29] parallel_4.0.3    fansi_0.5.0       highr_0.9         Rcpp_1.0.7       </span>
+<span class="co">#&gt; [33] scales_1.1.1      cachem_1.0.6      desc_1.3.0        jsonlite_1.7.2   </span>
+<span class="co">#&gt; [37] farver_2.1.0      systemfonts_1.0.3 fs_1.5.2          textshaping_0.3.5</span>
+<span class="co">#&gt; [41] digest_0.6.28     stringi_1.7.5     dplyr_1.0.7       grid_4.0.3       </span>
+<span class="co">#&gt; [45] rprojroot_2.0.2   tools_4.0.3       magrittr_2.0.1    sass_0.4.0       </span>
+<span class="co">#&gt; [49] tibble_3.1.5      crayon_1.4.2      pkgconfig_2.0.3   ellipsis_0.3.2   </span>
+<span class="co">#&gt; [53] assertthat_0.2.1  rmarkdown_2.11    R6_2.5.1          compiler_4.0.3</span></code></pre></div>
 </div>
   </div>
 

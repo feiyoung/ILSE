@@ -9,11 +9,11 @@
   summary method for class "ilse" or "fiml".
 }
 \usage{
-  summary(object, Nbt=100)
+  summary(object, Nbt=20)
 
-  \method{summary}{ilse}(object, Nbt=100)
+  \method{summary}{ilse}(object, Nbt=20)
 
-  \method{summary}{fiml}(object, Nbt=100)
+  \method{summary}{fiml}(object, Nbt=20)
 
   ##
   Fitted.values(object)
@@ -42,6 +42,6 @@ data(nhanes)
 NAlm <- ilse(age~., data=nhanes)
 summary(NAlm, Nbt=5)
 
-fimllm <- fimlreg(age~., data=nhanes, iterlim= 40)
+fimllm <- fimlreg(age~., data=nhanes)
 summary(fimllm, Nbt = 5)
 }

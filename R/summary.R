@@ -1,5 +1,5 @@
-summary <- function(object, Nbt=100) UseMethod("summary")
-summary.ilse <- function(object, Nbt=100){
+summary <- function(object, Nbt=20) UseMethod("summary")
+summary.ilse <- function(object, Nbt=20){
   Est <- object$beta
   res <- matrix(0, nrow=length(Est), ncol=4)
   Acov <- bootstrap(object, repTimes = Nbt)
@@ -15,7 +15,7 @@ summary.ilse <- function(object, Nbt=100){
   res
 }
 
-summary.fiml <- function(object, Nbt=100){
+summary.fiml <- function(object, Nbt=20){
   Est <- object$beta
   res <- matrix(0, nrow=length(Est), ncol=4)
   Acov <- bootstrap(object, repTimes = Nbt)
@@ -32,8 +32,8 @@ summary.fiml <- function(object, Nbt=100){
 }
 
 print <- function(object) UseMethod("print")
-print.ilse <- function(object) print(object[1:5])
-print.fiml <- function(object) print(object[1:3])
+print.ilse <- function(object) print(object[c(1,3:5)])
+print.fiml <- function(object) print(object[1:2])
 
 Coef <- function(object) {
   if(!is.element(class(object), c('ilse', 'fiml')))
