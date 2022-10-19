@@ -6,6 +6,7 @@
 
 [![](https://www.r-pkg.org/badges/version-ago/ILSE)](https://cran.r-project.org/package=ILSE)
 [![](https://cranlogs.r-pkg.org/badges/ILSE?color=orange)](https://cran.r-project.org/package=ILSE)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/ILSE?color=orange)](https://cran.r-project.org/package=ILSE)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/feiyoung/ILSE/master.svg)](https://codecov.io/github/feiyoung/ILSE?branch=master)
 [![](https://badges.feiyoung.org/184_status.svg)](https://github.com/feiyoung/ILSE/issues)
