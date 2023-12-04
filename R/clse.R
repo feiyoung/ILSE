@@ -1,3 +1,6 @@
+# library(pkgdown)
+# build_home()
+
 ilse <- function(...) UseMethod("ilse")
 
 
